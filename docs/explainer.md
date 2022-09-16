@@ -11,37 +11,37 @@
 
 MiniApp Components are the building blocks to creating MiniApp pages. Each component encapsulates functionality, data, and styles, enabling developers to create custom and reusable items that can be combined to develop MiniApps. MiniApps include essential components like page containers, textual and multimedia content, and other interactive elements such as forms.
 
-This document aims to specify a set of common practices to define MiniApps Components that allow developers to build similar user interfaces across MiniApp platforms efficiently, and provide a consistent user experience.
+This document aims to specify a set of common practices to define MiniApps Components that allow developers to build similar user interfaces across MiniApp platforms efficiently and provide a consistent user experience.
 
 
 ### Why should we care?
 
 Although MiniApps Components share the same concept as Web Components, their capabilities and development features differ. The main differences are motivated by the architecture of the existing implementations along the MiniApp ecosystem following the MVVM pattern, based on components developed through domain-specific markup languages and without access to the standard DOM. 
 
-Even though [[[MINIAPP-PACKAGING]]] recommends MiniApp agents to support standard Web Components, MiniApp vendors might opt to implement the internal components using the traditional MVVM architecture and, subsequently, manage them through non-standard mechanisms like virtual DOM (VDOM) or content interpolation.
+Even though the MiniApp Packaging specification recommends MiniApp agents to support standard Web Components, MiniApp vendors might opt to implement the internal components using the traditional MVVM architecture and, subsequently, manage them through non-standard mechanisms like virtual DOM (VDOM) or content interpolation.
 
 ## 2. Scope of work
 
 The MiniApp Components specification aims to collect the minimum set of common features from all the MiniApp versions, including: 
 
-- Built-in components (elements) names and properties
+- Built-in components (elements), names and properties
 - Event handling and basic event types 
-- High level features for component definition
+- High-level features for component definition
 
 ### Out of scope
 
 - Definition of HTML elements
-- Definition of beaviour or appearance of elements.
+- Definition of behavior or appearance of elements.
 - Definition of a markup language for MiniApp
 
 ### What kind of document will be produced?
 
-To avoid overlap and confusion with Web Components and other recommendations in W3C, this specification aims to be an informative reference and is not intended to be a formal standard. Thus, this specification will be published as a Group Note, with formal review, but not endorsed by W3C.
+To avoid overlap and confusion with Web Components and other recommendations in W3C, this specification aims to be an informative reference and is not intended to be a formal standard. Thus, this specification will be published as a Group Note with a formal review but not be endorsed by W3C.
 
 This document will follow the principles below:
 
 - Identify the common practices and existing implementations regarding MiniApp components;
-- Maximize reuse and alignment of the specification with the existing standards (specially HTML, CSS and DOM); and
+- Maximize reuse and alignment of the specification with the existing standards (especially HTML, CSS, and DOM); and
 - Alignment with other groups in W3C (i.e., [OpenUI CG](https://open-ui.org/)) providing feedback and collecting new requirements that could serve to enhance the existing standards.
 
 
@@ -53,16 +53,16 @@ This section analyzes the differences between the standard Web Components and th
 
 The main differences identified are:
 
-- __Component resources__. MiniApps require specific resource types, including markup languages, and file system structure. 
+- __Component resources__. MiniApps require specific resource types, including markup languages and file system structure. 
 - __Component interface__. MiniApp components have specific properties and methods. Access to global variables and page elements differs in all versions. 
-- __Template definition__. MiniApps have advanced `{{moustache}}` templating mechanism with data binding and conditional rendering.
+- __Template definition__. MiniApps have an advanced `{{moustache}}` templating mechanism with data binding and conditional rendering.
 - __Event management__. MiniApp event listeners are similar, but developers cannot use the `addEventListener()` method from the logic. Event interfaces are different.
-- __Stylesheets__. MiniApps are based on CSS3 profiles, with minor additions. Imports, properties and rules are similar. 
+- __Stylesheets__. MiniApps are based on CSS3 profiles, with minor additions. Imports, properties, and rules are similar. 
 
 
 #### Component resources
 
-Depending on the implementation, MiniApp components are defined using specific file formats and resources to describe templates, logic and styles.
+Depending on the implementation, MiniApp components are defined using specific file formats and resources to describe templates, logic, and styles.
 
 ##### Quick App (Xiaomi, Huawei)
 
@@ -119,7 +119,7 @@ Component ( {
 })
 ```
 
-`.json` to indicate that the current directory files defines a component.
+`.json` to indicate that the current directory files define a component.
 
 ```js
 // /components/index/index.json
@@ -144,7 +144,7 @@ Component ( {
 
 Baidu Smart Mini Programs enable the creation of components using four resources in the same directory: `.swan`, `.js`, `.json`, and `.css`.
 
-`.swan`. SWAN file including the template.
+`.swan` with the SWAN file, including the template.
 
 ```xml
 <!-- /components/custom/custom.swan -->
@@ -173,7 +173,7 @@ Component ({
 })
 ```
 
-`.json` to indicate that the current directory files defines a component.
+`.json` to indicate that the current directory files define a component.
 
 ```js
 // /components/custom/custom.json
@@ -215,7 +215,7 @@ The component [templates are described](https://doc.quickapp.cn/framework/templa
 </template>
 ```
 
-Quick Apps offer advanced rendering controls (including conditionals, loops and decorators), as well as data and event binding. 
+Quick Apps offer advanced rendering controls (including conditionals, loops, and decorators) and data and event binding. 
 
 
 ##### Alipay Mini Program
@@ -233,7 +233,7 @@ The component [templates are described](https://opendocs.alipay.com/mini/framewo
 </template>
 ```
 
-Alipay Mini Programs offer advanced rendering controls (including conditionals and loops), as well as data and event binding. 
+Alipay Mini Programs offer advanced rendering controls (including conditionals and loops), and data and event binding. 
 
 ##### Baidu Smart Mini Program
 
@@ -252,7 +252,7 @@ Baidu Smart Mini Programs offer advanced rendering controls (including condition
 
 #### Templating
 
-Web Components are defined in terms of [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) and [templating](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots) with	`<template>`, and `<slot>`.	MiniApps have different specifications.
+Web Components are defined in terms of [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) and [templating](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots) with	`<template>` and `<slot>`.	MiniApps have different specifications.
  
 
 ##### Quick App (Xiaomi, Huawei)
@@ -299,7 +299,7 @@ SWAN document with elements within.
 [More information](https://smartprogram.baidu.com/docs/develop/framework/dev/).
 
 
-#### Component re-use (instantiation)
+#### Component reuse (instantiation)
 
 How developers reuse the components defined in the [previous section](#templating). 
 
@@ -417,7 +417,7 @@ How the properties (attributes) are passed to the components when new instances 
 
 ##### Quick App (Xiaomi, Huawei)
 
-Use the defined `props` directly as instance's attributes.
+Use the defined `props` directly as instance attributes.
 
 ```xml
 <import name="comp" src="./comp"></import>
@@ -437,7 +437,7 @@ Use the defined `props` directly as instance's attributes.
 
 ##### Alipay Mini Program
 
-Pass the properties as as instance's attributes.
+Pass the properties as instance attributes.
 
 ```xml
 <!-- /pages/index/index.axml -->
@@ -448,7 +448,7 @@ Pass the properties as as instance's attributes.
 
 ##### Baidu Smart Mini Program
 
-Properties as instance's attributes
+Properties as instance attributes
 
 ```js
 // home.json
@@ -472,7 +472,7 @@ Properties as instance's attributes
 
 #### Data binding
 
-All the MiniApp version have [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) to bind variables from the logic part of the component.
+All the MiniApp versions have [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) to bind variables from the logic part of the component.
 
 ##### Quick App (Xiaomi, Huawei)
 
@@ -536,7 +536,7 @@ Page({
 
 #### Event binding
 
-All the MiniApp version have similar mechanism to add event handlers from the template. MiniApps cannot bind listeners using `addEventListener()` from scripts.
+All the MiniApp versions have a similar mechanism to add event handlers from the template. MiniApps cannot bind listeners using `addEventListener()` from scripts.
 
 ##### Quick App (Xiaomi, Huawei)
 
@@ -628,7 +628,7 @@ Event types by default are different. Not all the standard [event types](https:/
 
 Different vendors use different names for the same event type. For example, `tap` event in Alipay and Baidu Mini Programs, but `click` in Quick Apps. 
 
-Also, even if different vendors have the same name for the same event the implementation is different. For example, for the `longtap` event, Alipay Mini Programs trigger the event after 500 ms after the first contact, while Baidu Smart Mini Programs' period is 350 ms.
+Also, implementations are different even if vendors use the same name for the same event. For example, the `longtap` event, Alipay Mini Programs trigger the event 500 ms after the first contact, while Baidu Smart Mini Programs' period is 350 ms.
 
 ##### Quick App (Xiaomi, Huawei)
 
@@ -879,9 +879,9 @@ Predefined [component's methods](https://doc.quickapp.cn/framework/script.html):
 
 ### Essential MiniApp elements
 
-MiniApp elements are the building blocks for describing the structure and content of MiniApp Components. This section will analyze the differences among the built-in components or elements in each MiniApp version and the standard HTML. 
+MiniApp elements are the building blocks for describing the structure and content of MiniApp Components. This section will analyze the differences between the built-in components or elements in each MiniApp version and the standard HTML. 
 
-The table below includes an analysis of the MiniApp elements available in the existing MiniApp specifications. Each row represents an element and the semantically equivalent(s) from each specification, without considering the details in terms of attributes or behavior.
+The table below includes an analysis of the MiniApp elements available in the existing MiniApp specifications. Each row represents an element and the semantically equivalent(s) from each specification without considering the details in terms of attributes or behavior.
 
 
 | Feature        | W3C Spec                                                        | [QuickApp (Xiaomi, Huawei)](https://www.quickapp.cn/) | [Alipay Mini Program](https://docs.alipay.com/mini/developer/) | [Baidu Smart Mini Program](https://smartprogram.baidu.com/developer/index.html) |
