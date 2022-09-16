@@ -70,7 +70,7 @@ Quick App uses [UX documents](https://doc.quickapp.cn/framework/source-file.html
 
 Example:
 
-``` xml
+```xml
 <template>
   <div>
     <text class="title" onclick="press">Hello</text>
@@ -90,16 +90,15 @@ Example:
     color: red;
   }
 </style>
-
 ``` 
 
 ##### Alipay Mini Program
 
 Alipay Mini Program components may have four resources in the same directory: `.axml`, `.js`, `.json`, and `.acss`.
 
-`.axml`. AXML file including the template.
+`.axml` with a AXML file that includes the template.
 
-``` xml
+```xml
 <!-- /components/index/index.axml -->
 <view>
   Hi, I'm a component.
@@ -108,7 +107,7 @@ Alipay Mini Program components may have four resources in the same directory: `.
 
 `.js` for component registration.
 
-``` js
+```js
 // /components/index/index.js
 Component ( {
   mixins :  [ ] ,
@@ -122,7 +121,7 @@ Component ( {
 
 `.json` to indicate that the current directory files defines a component.
 
-``` json
+```js
 // /components/index/index.json
 {
   "component" : true 
@@ -131,7 +130,7 @@ Component ( {
 
 `.acss`. ACSS document with the stylesheet.
 
-``` css
+```css
 /** /components/index/index.acss **/
 .md-button  {
   padding : 15px ; 
@@ -147,7 +146,7 @@ Baidu Smart Mini Programs enable the creation of components using four resources
 
 `.swan`. SWAN file including the template.
 
-``` xml
+```xml
 <!-- /components/custom/custom.swan -->
 <view class="name" bindtap="tap">
     {{name}}{{age}}
@@ -156,7 +155,7 @@ Baidu Smart Mini Programs enable the creation of components using four resources
 
 `.js` for component registration.
 
-``` js
+```js
 // /components/custom/custom.js
 Component ({
   properties: { 
@@ -176,7 +175,7 @@ Component ({
 
 `.json` to indicate that the current directory files defines a component.
 
-``` json
+```js
 // /components/custom/custom.json
 {
   "component" : true 
@@ -185,7 +184,7 @@ Component ({
 
 `.css`. CSS document with the stylesheet.
 
-``` css
+```css
 /** /components/index/index.css **/
 .name {
     color: red;
@@ -205,7 +204,7 @@ Quick Apps use a concrete notation for UX documents. Scripts, stylesheets and te
 
 The component [templates are described](https://doc.quickapp.cn/framework/template.html) as an XML fragment within the `<template>` section, using HTML-like elements.
 
-``` xml
+```xml
 <template>
   <div>
     <div for="{{list}}" tid="uniqueId">
@@ -225,7 +224,7 @@ Alipay Mini Programs use a concrete AXML notation for the templates described in
 
 The component [templates are described](https://opendocs.alipay.com/mini/framework/axml) using specific elements.
 
-``` xml
+```xml
 <!-- axml -->
 <template  name="task">
   <view  class="task-item" >
@@ -240,7 +239,7 @@ Alipay Mini Programs offer advanced rendering controls (including conditionals a
 
 Baidu Smart Mini Programs use [SWAN resources](https://smartprogram.baidu.com/docs/develop/framework/dev/). Developers use `.swan` documents to create rendering templates for the pages. 
 
-``` xml
+```xml
 <view>
     <custom-component>
         <view>{{name}}</view>
@@ -260,7 +259,7 @@ Web Components are defined in terms of [Custom Elements](https://developer.mozil
 
 Definition of `<template>` element in the root of a `.ux` document.
 
-``` xml
+```xml
 <!–- file.ux -->
 <template>
   <div class="demo-page">
@@ -275,7 +274,7 @@ Definition of `<template>` element in the root of a `.ux` document.
 
 AXML’s `<template>` element in an `.axml` document.
 
-``` xml
+```xml
 <!-- header.axml -->
 <template name="header">
   <view>
@@ -290,7 +289,7 @@ AXML’s `<template>` element in an `.axml` document.
 
 SWAN document with elements within.
 
-``` xml
+```xml
 <view>
     <text class="wrap">hello world</text>
 </view>
@@ -308,7 +307,7 @@ How developers reuse the components defined in the [previous section](#templatin
 
 `<import>` element in the root of the `.ux` document.
 
-``` xml
+```xml
 <import name="comp" src="./comp"></import>
 
 <template>
@@ -324,7 +323,7 @@ How developers reuse the components defined in the [previous section](#templatin
 
 AXML’s `<import>` and `<template is=...` elements.
 
-``` xml
+```xml
 <import src="./header.axml" />
 
 <template is="header" data="{{...item}}"/>
@@ -336,7 +335,7 @@ AXML’s `<import>` and `<template is=...` elements.
 
 Declaration in the configuration (`.json`) document. 
 
-``` json
+```js
 // home.json
 {
   "usingComponents": {
@@ -347,7 +346,7 @@ Declaration in the configuration (`.json`) document.
 
 And declaration in the SWAN document using the ID in the configuration file.
 
-``` xml
+```xml
 <!-- home.swan -->
 <view>
    <custom name="swanapp"></custom>
@@ -365,7 +364,7 @@ How the properties (attributes) of the components are defined in each MiniApp ve
 
 Components define properties in a `props` array within the object declared in the `<script>` section.     
 
-``` html
+```html
 <!-– comp.ux -->
 <script>
   export default {
@@ -383,7 +382,7 @@ Components define properties in a `props` array within the object declared in th
 
 Definition of the component using `Component()` and the properties as pairs in the `props` object.
 
-``` js
+```js
 // /components/index/index.js
 Component ({
   props : { 
@@ -397,7 +396,7 @@ Component ({
 
 Definition of the component using `Component()` and the properties in the `properties` object.
 
-``` js
+```js
 // (custom.js)
 Component({
   properties: {
@@ -420,7 +419,7 @@ How the properties (attributes) are passed to the components when new instances 
 
 Use the defined `props` directly as instance's attributes.
 
-``` xml
+```xml
 <import name="comp" src="./comp"></import>
 
 <template>
@@ -440,7 +439,7 @@ Use the defined `props` directly as instance's attributes.
 
 Pass the properties as as instance's attributes.
 
-``` xml
+```xml
 <!-- /pages/index/index.axml -->
 <comp name='Another name'></comp> 
 ```
@@ -451,7 +450,7 @@ Pass the properties as as instance's attributes.
 
 Properties as instance's attributes
 
-``` json
+```js
 // home.json
 {
   "usingComponents": {
@@ -460,7 +459,7 @@ Properties as instance's attributes
 }
 ```
 
-``` xml
+```xml
 // .swan document
 <view>
     <custom name="Passing text" >
@@ -479,7 +478,7 @@ All the MiniApp version have [`{{moustache}}` notation](https://en.wikipedia.org
 
 [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) with variables and methods under the `private` or `public` object in the script.
 
-``` xml
+```xml
 <template>
   <text>{{message}}</text>
 </template>
@@ -500,11 +499,11 @@ All the MiniApp version have [`{{moustache}}` notation](https://en.wikipedia.org
 
 [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) with variables in the AXML file linked to the `Page()` corresponding `data` object variables.
 
-``` xml
+```xml
 <view> {{ message }} </view>
 ```
 
-``` js
+```js
 Page({ 
    data: { 
      message: 'Hello alipay!', 
@@ -518,12 +517,12 @@ Page({
 
 [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) with variables in SWAN template, linked to the `Page()` corresponding `data` object variables.
 
-``` xml
+```xml
 <!-- index.swan -->
 <view>{{text}}</view>
 ```
 
-``` js
+```js
 // index.js
 Page({
     data: {
@@ -543,7 +542,7 @@ All the MiniApp version have similar mechanism to add event handlers from the te
 
 `on+eventtype` (or `@+eventtype`) attribute in the template. 
 
-``` xml
+```xml
 <text onclick="loadMore"></text>
 ```
 
@@ -553,7 +552,7 @@ All the MiniApp version have similar mechanism to add event handlers from the te
 
 `on+eventtype` attribute in the template.
 
-``` xml
+```xml
 <view onTap="loadMore">
   More items…
 <view> 
@@ -565,7 +564,7 @@ All the MiniApp version have similar mechanism to add event handlers from the te
 
 `bind:+eventtype` attribute in the template.
 
-``` xml
+```xml
 <view bind:tap="loadMore">
    More items…
 </view>
@@ -582,7 +581,7 @@ In MiniApps, listeners must be defined in specific places in the logic of the co
 
 `function()` declaration as root of the object in `<script>`.
 
-``` html
+```html
 <script>
   export default {
     loadMore(e) {
@@ -598,7 +597,7 @@ In MiniApps, listeners must be defined in specific places in the logic of the co
 
 `function()` declaration in the root of the `Page({})` declaration in the script.
 
-``` js
+```js
 Page ({
   loadMore(e) {
     console.log(e);
@@ -612,7 +611,7 @@ Page ({
 
 `function()` declaration in the root of the `Page({})` declaration in the script.
 
-``` js
+```js
 Page({
   loadMore(e) {
     swan.showToast(e.type);
@@ -739,7 +738,7 @@ The different MiniApp versions use the same `style` attribute to declare inline 
 
 `style` attribute in the template elements.	
 
-``` xml
+```xml
 <template> 
    <div style="flex-direction: column;"></div>
 </template>	
@@ -749,7 +748,7 @@ The different MiniApp versions use the same `style` attribute to declare inline 
 
 `style` attribute in the template elements.
 
-``` xml
+```xml
 <view style="color:#ffffff“ />		
 ```
 
@@ -757,7 +756,7 @@ The different MiniApp versions use the same `style` attribute to declare inline 
 
 `style` attribute in the SWAN template elements.	
 
-``` xml
+```xml
 <view style="color: #ffffff"> swan </view>
 ```
 
@@ -774,7 +773,7 @@ The different MiniApp versions use similar [`@import`](https://developer.mozilla
 
 `@import` at-rule within the `<style>` section.
 
-``` html
+```html
 <style>
   @import './style.css';
 </style>	
@@ -784,7 +783,7 @@ The different MiniApp versions use similar [`@import`](https://developer.mozilla
 
 `@import` at-rule within the `.acss` document.
 
-``` css
+```css
 @import "./button.acss" ; 
 @import "/common/button.acss" ;
 ```
@@ -793,7 +792,7 @@ The different MiniApp versions use similar [`@import`](https://developer.mozilla
 
 `@import` at-rule within the `.css` document.
 
-``` css
+```css
 @import "header.css";
 ```
 	
