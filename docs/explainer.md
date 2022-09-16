@@ -11,7 +11,8 @@
 
 MiniApp Components are the building blocks to creating MiniApp pages. Each component encapsulates functionality, data, and styles, enabling developers to create custom and reusable items that can be combined to develop MiniApps. MiniApps include essential components like page containers, textual and multimedia content, and other interactive elements such as forms.
 
-This document aims to specify a set of common practices to define MiniApps Components that allow developers to build similar user interfaces across MiniApp platforms efficiently.
+This document aims to specify a set of common practices to define MiniApps Components that allow developers to build similar user interfaces across MiniApp platforms efficiently, and provide a consistent user experience.
+
 
 ### Why should we care?
 
@@ -19,8 +20,34 @@ Although MiniApps Components share the same concept as Web Components, their cap
 
 Even though [[[MINIAPP-PACKAGING]]] recommends MiniApp agents to support standard Web Components, MiniApp vendors might opt to implement the internal components using the traditional MVVM architecture and, subsequently, manage them through non-standard mechanisms like virtual DOM (VDOM) or content interpolation.
 
+## 2. Scope of work
 
-## 2. Differences with Web Components
+The MiniApp Components specification aims to collect the minimum set of common features from all the MiniApp versions, including: 
+
+- Built-in components (elements) names and properties
+- Event handling and basic event types 
+- High level features for component definition
+
+### Out of scope
+
+- Definition of HTML elements
+- Definition of beaviour or appearance of elements.
+- Definition of a markup language for MiniApp
+
+### What kind of document will be produced?
+
+To avoid overlap and confusion with Web Components and other recommendations in W3C, this specification aims to be an informative reference and is not intended to be a formal standard. Thus, this specification will be published as a Group Note, with formal review, but not endorsed by W3C.
+
+This document will follow the principles below:
+
+- Identify the common practices and existing implementations regarding MiniApp components;
+- Maximize reuse and alignment of the specification with the existing standards (specially HTML, CSS and DOM); and
+- Alignment with other groups in W3C (i.e., [OpenUI CG](https://open-ui.org/)) providing feedback and collecting new requirements that could serve to enhance the existing standards.
+
+
+## 3. Key considerations
+
+### Differences with Web Components
 
 This section analyzes the differences between the standard Web Components and the MiniApp components, considering the existing vendor-specific implementations, Baidu Smart Mini Programs, Alipay Mini Programs, and Quick Apps (Huawei, Xiaomi). 
 
@@ -33,11 +60,11 @@ The main differences identified are:
 - __Stylesheets__. MiniApps are based on CSS3 profiles, with minor additions. Imports, properties and rules are similar. 
 
 
-### Component resources
+#### Component resources
 
 Depending on the implementation, MiniApp components are defined using specific file formats and resources to describe templates, logic and styles.
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 Quick App uses [UX documents](https://doc.quickapp.cn/framework/source-file.html) (`.ux`) to describe and use components. These documents contains three sections, `<template>`, `<script>`, and `<style>`, that include the specific template definition, logic and styling respectively. 
 
@@ -66,7 +93,7 @@ Example:
 
 ``` 
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 Alipay Mini Program components may have four resources in the same directory: `.axml`, `.js`, `.json`, and `.acss`.
 
@@ -114,7 +141,7 @@ Component ( {
 [Read more](https://opendocs.alipay.com/mini/framework/custom-component-overview).
 
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Baidu Smart Mini Programs enable the creation of components using four resources in the same directory: `.swan`, `.js`, `.json`, and `.css`.
 
@@ -168,11 +195,11 @@ Component ({
 [Read more](https://smartprogram.baidu.com/docs/develop/framework/custom-component/).
 
 
-### Component markup language
+#### Component markup language
 
 Although the MiniApp components templates are based on HTML, the concrete implementations use their domain-specific markup languages.    
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 Quick Apps use a concrete notation for UX documents. Scripts, stylesheets and templates are defined under the same document, marked with the elements `<script>`, `<style>`, and `<template>`. 
 
@@ -192,7 +219,7 @@ The component [templates are described](https://doc.quickapp.cn/framework/templa
 Quick Apps offer advanced rendering controls (including conditionals, loops and decorators), as well as data and event binding. 
 
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 Alipay Mini Programs use a concrete AXML notation for the templates described in `.axml` documents. These documents are similar to XML, but without a root node.
 
@@ -209,7 +236,7 @@ The component [templates are described](https://opendocs.alipay.com/mini/framewo
 
 Alipay Mini Programs offer advanced rendering controls (including conditionals and loops), as well as data and event binding. 
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Baidu Smart Mini Programs use [SWAN resources](https://smartprogram.baidu.com/docs/develop/framework/dev/). Developers use `.swan` documents to create rendering templates for the pages. 
 
@@ -224,12 +251,12 @@ Baidu Smart Mini Programs use [SWAN resources](https://smartprogram.baidu.com/do
 Baidu Smart Mini Programs offer advanced rendering controls (including conditionals and loops), as well as data and event binding. 
 
 
-### Templating
+#### Templating
 
 Web Components are defined in terms of [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) and [templating](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots) with	`<template>`, and `<slot>`.	MiniApps have different specifications.
  
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 Definition of `<template>` element in the root of a `.ux` document.
 
@@ -244,7 +271,7 @@ Definition of `<template>` element in the root of a `.ux` document.
 
 [More information](https://doc.quickapp.cn/framework/template.html).	
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 AXML’s `<template>` element in an `.axml` document.
 
@@ -259,7 +286,7 @@ AXML’s `<template>` element in an `.axml` document.
 
 [More information](https://opendocs.alipay.com/mini/framework/axml-template).	
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 SWAN document with elements within.
 
@@ -273,11 +300,11 @@ SWAN document with elements within.
 [More information](https://smartprogram.baidu.com/docs/develop/framework/dev/).
 
 
-### Component re-use (instantiation)
+#### Component re-use (instantiation)
 
 How developers reuse the components defined in the [previous section](#templating). 
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 `<import>` element in the root of the `.ux` document.
 
@@ -293,7 +320,7 @@ How developers reuse the components defined in the [previous section](#templatin
 
 [More information](https://doc.quickapp.cn/framework/template.html).	
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 AXML’s `<import>` and `<template is=...` elements.
 
@@ -305,7 +332,7 @@ AXML’s `<import>` and `<template is=...` elements.
 
 [More information](https://opendocs.alipay.com/mini/framework/axml-template).
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Declaration in the configuration (`.json`) document. 
 
@@ -330,11 +357,11 @@ And declaration in the SWAN document using the ID in the configuration file.
 [More information](https://smartprogram.baidu.com/docs/develop/framework/dev/).
 
 
-### Component properties (definition)
+#### Component properties (definition)
 
 How the properties (attributes) of the components are defined in each MiniApp version. 
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 Components define properties in a `props` array within the object declared in the `<script>` section.     
 
@@ -352,7 +379,7 @@ Components define properties in a `props` array within the object declared in th
 ```
 [More information](https://doc.quickapp.cn/tutorial/framework/parent-child-component-communication.html).
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 Definition of the component using `Component()` and the properties as pairs in the `props` object.
 
@@ -366,7 +393,7 @@ Component ({
 [More information](https://opendocs.alipay.com/mini/framework/component_object).
 
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Definition of the component using `Component()` and the properties in the `properties` object.
 
@@ -385,11 +412,11 @@ Component({
 [More information](https://smartprogram.baidu.com/docs/develop/framework/custom-component/).
 
 
-### Component arguments
+#### Component arguments
 
 How the properties (attributes) are passed to the components when new instances are created. 
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 Use the defined `props` directly as instance's attributes.
 
@@ -409,7 +436,7 @@ Use the defined `props` directly as instance's attributes.
 [More information](https://doc.quickapp.cn/tutorial/framework/parent-child-component-communication.html).	
 
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 Pass the properties as as instance's attributes.
 
@@ -420,7 +447,7 @@ Pass the properties as as instance's attributes.
 
 [More information](https://opendocs.alipay.com/mini/framework/component_object).	
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Properties as instance's attributes
 
@@ -444,11 +471,11 @@ Properties as instance's attributes
 [More information](https://smartprogram.baidu.com/docs/develop/framework/custom-component/).
 
 
-### Data binding
+#### Data binding
 
 All the MiniApp version have [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) to bind variables from the logic part of the component.
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) with variables and methods under the `private` or `public` object in the script.
 
@@ -469,7 +496,7 @@ All the MiniApp version have [`{{moustache}}` notation](https://en.wikipedia.org
 [More information](https://doc.quickapp.cn/framework/template.html).	
 
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) with variables in the AXML file linked to the `Page()` corresponding `data` object variables.
 
@@ -487,7 +514,7 @@ Page({
                                 
 [More information](https://opendocs.alipay.com/mini/framework/data-binding).
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) with variables in SWAN template, linked to the `Page()` corresponding `data` object variables.
 
@@ -508,11 +535,11 @@ Page({
 [More information](https://smartprogram.baidu.com/docs/develop/framework/app_service_pagedata/).
 	
 
-### Event binding
+#### Event binding
 
 All the MiniApp version have similar mechanism to add event handlers from the template. MiniApps cannot bind listeners using `addEventListener()` from scripts.
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 `on+eventtype` (or `@+eventtype`) attribute in the template. 
 
@@ -522,7 +549,7 @@ All the MiniApp version have similar mechanism to add event handlers from the te
 
 [More information](https://doc.quickapp.cn/tutorial/framework/event-on.html).	
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 `on+eventtype` attribute in the template.
 
@@ -534,7 +561,7 @@ All the MiniApp version have similar mechanism to add event handlers from the te
 
 [More information](https://opendocs.alipay.com/mini/framework/events).	
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 `bind:+eventtype` attribute in the template.
 
@@ -547,11 +574,11 @@ All the MiniApp version have similar mechanism to add event handlers from the te
 [More information](https://smartprogram.baidu.com/docs/develop/framework/view_incident/).
 
 
-### Event listener definition
+#### Event listener definition
 
 In MiniApps, listeners must be defined in specific places in the logic of the component. 
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 `function()` declaration as root of the object in `<script>`.
 
@@ -567,7 +594,7 @@ In MiniApps, listeners must be defined in specific places in the logic of the co
 
 [More information](https://doc.quickapp.cn/tutorial/framework/event-on.html).	
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 `function()` declaration in the root of the `Page({})` declaration in the script.
 
@@ -581,7 +608,7 @@ Page ({
 
 [More information](https://opendocs.alipay.com/mini/framework/events).	
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 `function()` declaration in the root of the `Page({})` declaration in the script.
 
@@ -596,11 +623,15 @@ Page({
 [More information](https://smartprogram.baidu.com/docs/develop/framework/view_incident/).
 
 
-### Event types
+#### Event types
 
-Event types by default are different. Not all the standard [event types](https://html.spec.whatwg.org/multipage/indices.html#events-2) are supported.	
+Event types by default are different. Not all the standard [event types](https://html.spec.whatwg.org/multipage/indices.html#events-2) are supported. 
 
-#### Quick App (Xiaomi, Huawei)
+Different vendors use different names for the same event type. For example, `tap` event in Alipay and Baidu Mini Programs, but `click` in Quick Apps. 
+
+Also, even if different vendors have the same name for the same event the implementation is different. For example, for the `longtap` event, Alipay Mini Programs trigger the event after 500 ms after the first contact, while Baidu Smart Mini Programs' period is 350 ms.
+
+##### Quick App (Xiaomi, Huawei)
 
 [Basic events](https://doc.quickapp.cn/tutorial/framework/event-on.html):
 
@@ -617,7 +648,7 @@ Event types by default are different. Not all the standard [event types](https:/
 - `swipe`
 - `resize`
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 [Basic events](https://opendocs.alipay.com/mini/framework/events):
 
@@ -628,7 +659,7 @@ Event types by default are different. Not all the standard [event types](https:/
 - `tap`
 - `longTap`
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 [Basic events](https://smartprogram.baidu.com/docs/develop/framework/view_incident/):
 
@@ -639,11 +670,11 @@ Event types by default are different. Not all the standard [event types](https:/
 - `tap`
 
 
-### Event interface properties
+#### Event interface properties
 
 MiniApps have different basic event interfaces. Standard [`Event` interface properties](https://dom.spec.whatwg.org/#interface-event) are not implemented.	
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 [`Event` interface's](https://doc.quickapp.cn/widgets/common-events.html) properties:
 
@@ -652,7 +683,7 @@ MiniApps have different basic event interfaces. Standard [`Event` interface prop
 - `target`
 - `currentTarget`
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 [`BaseEvent` interface's](https://opendocs.alipay.com/mini/framework/event-object) properties:
 
@@ -660,7 +691,7 @@ MiniApps have different basic event interfaces. Standard [`Event` interface prop
 - `timeStamp`
 - `target`
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Properties of the [Event interface](https://smartprogram.baidu.com/docs/develop/framework/view_incident/).
 
@@ -673,11 +704,11 @@ Properties of the [Event interface](https://smartprogram.baidu.com/docs/develop/
 - `changedTouches`
 
 
-### Stylesheets (CSS Profile)
+#### Stylesheets (CSS Profile)
 
 MiniApp vendors use CSS3 profiles (a subset of the [standard](https://www.w3.org/TR/CSS/)) with minor additions.
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 CSS3 profile, and supports preprocessing (i.e., LESS and SASS).
 
@@ -685,13 +716,13 @@ Only supports a [subset of selectors and properties](https://doc.quickapp.cn/wid
 
 Read [the specification](https://doc.quickapp.cn/tutorial/framework/page-style-and-layout.html).
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 CSS3 profile named [ACSS](https://opendocs.alipay.com/mini/framework/acss), compatible with CSS3.
 
 ACSS adds `rpx` (responsive pixel), and a specific `page` selector.
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Specific CSS3 profile. 
 
@@ -700,9 +731,11 @@ It adds `rpx` (responsive pixel).
 See [the specification](https://smartprogram.baidu.com/docs/develop/framework/view_css/).
 
 
-### Stylesheets (inline declaration)
+#### Stylesheets (inline declaration)
 
-#### Quick App (Xiaomi, Huawei)
+The different MiniApp versions use the same `style` attribute to declare inline styles.  
+
+##### Quick App (Xiaomi, Huawei)
 
 `style` attribute in the template elements.	
 
@@ -712,7 +745,7 @@ See [the specification](https://smartprogram.baidu.com/docs/develop/framework/vi
 </template>	
 ```
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 `style` attribute in the template elements.
 
@@ -720,7 +753,7 @@ See [the specification](https://smartprogram.baidu.com/docs/develop/framework/vi
 <view style="color:#ffffff“ />		
 ```
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 `style` attribute in the SWAN template elements.	
 
@@ -733,11 +766,11 @@ See [the specification](https://smartprogram.baidu.com/docs/develop/framework/vi
 `style` attribute in the elements.	
 
 
-### Stylesheets (import)
+#### Stylesheets (import)
 
 The different MiniApp versions use similar [`@import`](https://developer.mozilla.org/en-US/docs/Web/CSS/@import) at-rule mechanisms.  
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 `@import` at-rule within the `<style>` section.
 
@@ -747,7 +780,7 @@ The different MiniApp versions use similar [`@import`](https://developer.mozilla
 </style>	
 ```
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 `@import` at-rule within the `.acss` document.
 
@@ -756,7 +789,7 @@ The different MiniApp versions use similar [`@import`](https://developer.mozilla
 @import "/common/button.acss" ;
 ```
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 `@import` at-rule within the `.css` document.
 
@@ -764,11 +797,11 @@ The different MiniApp versions use similar [`@import`](https://developer.mozilla
 @import "header.css";
 ```
 	
-### Component interface (properties)
+#### Component interface (properties)
 
 All the MiniApp versions have different component interfaces (they don't use [`HTMLElement` interface](https://html.spec.whatwg.org/multipage/dom.html#htmlelement)).  
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 [Predefined components' properties](https://doc.quickapp.cn/framework/script.html):
 
@@ -779,7 +812,7 @@ All the MiniApp versions have different component interfaces (they don't use [`H
 - `$app`
 - `$page`
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 [Predefined components' properties](https://opendocs.alipay.com/mini/framework/component_object): 
 
@@ -791,7 +824,7 @@ All the MiniApp versions have different component interfaces (they don't use [`H
 - `pageRouter`
 - `$page`
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 [Predefined components' properties](https://smartprogram.baidu.com/docs/develop/framework/custom-component_comp/):
 
@@ -801,11 +834,11 @@ All the MiniApp versions have different component interfaces (they don't use [`H
 - `data`
 - `properties`
 
-### Component interface (methods)
+#### Component interface (methods)
 
 All the MiniApp versions have different non-standard component interfaces (they don't use [`HTMLElement` interface](https://html.spec.whatwg.org/multipage/dom.html#htmlelement)).  
 
-#### Quick App (Xiaomi, Huawei)
+##### Quick App (Xiaomi, Huawei)
 
 Predefined [component's methods](https://doc.quickapp.cn/framework/script.html):
 
@@ -821,7 +854,7 @@ Predefined [component's methods](https://doc.quickapp.cn/framework/script.html):
 - `$forceUpdate()`
 
 
-#### Alipay Mini Program
+##### Alipay Mini Program
 
 Predefined [component's methods](https://opendocs.alipay.com/mini/framework/component_object):
 
@@ -832,7 +865,7 @@ Predefined [component's methods](https://opendocs.alipay.com/mini/framework/comp
 - `selectOwnerComponent()`
 - `selectComponsedParentComponent()`
 
-#### Baidu Smart Mini Program
+##### Baidu Smart Mini Program
 
 Predefined [component's methods](https://doc.quickapp.cn/framework/script.html):
 
@@ -845,86 +878,57 @@ Predefined [component's methods](https://doc.quickapp.cn/framework/script.html):
 - `selectAllComponents()`
 - `groupSetData()`
 
+### Essential MiniApp elements
+
+MiniApp elements are the building blocks for describing the structure and content of MiniApp Components. This section will analyze the differences among the built-in components or elements in each MiniApp version and the standard HTML. 
+
+The table below includes an analysis of the MiniApp elements available in the existing MiniApp specifications. Each row represents an element and the semantically equivalent(s) from each specification, without considering the details in terms of attributes or behavior.
 
 
-
-Even for similar UI components, there are some gaps for different vendor's events handling. First, different vendors use different names for the same event. For example, for the “tap” event, Alipay and Baidu named “tap” while Huawei named “click”. Second, even if different vendors have the same name for the same event, different deployments may still exist. For example, for the “longtap” event, Alipay describes it as touch and leave after more than 500 ms. Baidu describes as more than 350ms.
-
-This may lead to repeated learning and repeated development by developers. Therefore, we propose to define a standard set of UI common components for MiniApp. That allows codes to easily migrate to different platforms, reduce repetitive development, and provide the same user experience.
-
-## 2. MiniApp Common UI Components
-Given the above problems, we select UI components common to existing widely deployed applets and standardize them. The common UI components may include as following.
-* **Basic Components**:
-Basic components provide the minimum interactive blocks that can be reused for the MiniApp. Developers can define the user interface of the MiniApp by combining these basic components. It may include the following components such as 'Image', 'Progress', 'Text', 'Input', 'Button', 'Label', 'Select', 'Slider', 'Switch', 'Picker', 'Video', and 'Canvas'.
-* **Container Components**:
-Container components provide the structure of a MiniApp page. It may inculdes the following components such as 'Div', 'List', 'Swiper', 'Tabs', and 'Refresh'.
-### Scope of work:
-The MiniApp Common UI Components specification aims to standardize on:
-- Component names and properties
-- States
-- Behaviors
-- How behaviors transition state 
-### Out of Scope:
-- Appearance of the component
-- Markup Language for MiniApp 
-
-### How to standardize the common UI components
-Standardized MiniApp UI proposals will be based on the following principles:
-- Identify the scope of the common UI based on the existing implementation;
-- Reuse the existing standards as much as possible and extend them to support the attributes and events required by the MiniApp;
-- Alignment with standards bodies like OpenUI CG to define new elements (e.g., picker, tab).
-
-### Key Considerations 
-
-#### How to implementate the standard MiniApp common UI components?
-
-
-## 3. Comparison with existing standard UI components 
-
-The following table mainly describes the comparison between the MiniApp common UI components and W3C standards compontents:
-MiniApp Common UI Components | Attributes | Events | Similar Standard Component 
-:---    |:---    |:--        |:---     
-div | - | - | Constraint of standard attributes and different events
-list | - | scrollend | Element event scroll as the standard
-list-item | - | - | - |
-swiper | index, loop, vertical | change | - |
-tabs | index, vertical, disabled, focusable, data | - | tabs for HTML (OpenUI) |
-tab-bar | mode | - | - |
-tab-content | scrollable | - | CSS overflow: scroll |
-refresh | offset, type, refreshing, lasttime, friction, disabled, focusable, data | - | Similar to SwipeRefreshLayout, but more related to the user agent instead of the document. |
-image | src, alt, disabled, focusable & complete, error | - | &lt;img&gt; with attributes src and alt are the standard |
-progress | type, focusable, data | - | &lt;progress&gt; element (max, value, position, labels) |
-text | focusable, data | - | Similar to SVG’s text. |
-input | type, placeholder…, headericon, disable, focusable | change | input element (with all types supported), attribute disabled, no headericon. |
-button | type (styles instead of function), value, icon, waiting, focusable* | - | button element, attribute disabled, no waiting, no icon. (in OpenUI) |
-label | focusable | - | label element. Labelable elements: button, input, meter, output, progress, select, textarea |
-select | data | - | select element. Attribute disabled (in OpenUI) |
-slider | min, max, value, data | change | input@type=”range” (in OpenUI) |
-switch | - | - | - |
-picker | type (text, date, time, datetime, multi-text) | - | input element (date, time, datetime-local) and datalist element (with attribute options). |
-video | muted, src, autoplay, poster, controls | prepared, seeked, timeupdate, fullscreenchange | video element with all the attributes but (disable, and focusable) + vents: readyState, buffered  (but not prepared, seeked, timeupdate, fullscreenchange) |
-canvas | disable, focusable, data | - | canvas element |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| Feature        | W3C Spec                                                        | [QuickApp (Xiaomi, Huawei)](https://www.quickapp.cn/) | [Alipay Mini Program](https://docs.alipay.com/mini/developer/) | [Baidu Smart Mini Program](https://smartprogram.baidu.com/developer/index.html) |
+| -------------- | --------------------------------------------------------------- | ----------------------- | ---------------- | ---------------------- |
+| div            | `<div>`                                                         | `<div>`                   | `<view>`           | `<view>`                 |
+| span           | `<span>`                                                        | `<span>`                  |                  |                        |
+| stack          |                                                                 | `<stack>`                 | `<cover-view>`     | `<cover-view>`           |
+| carousel       |                                                                 | `<swiper>`                | `<swiper>`         | `<swiper>`               |
+| tabs           | [OpenUI research](https://open-ui.org/components/tabs.research) | `<tabs>`                  |                  | `<tabs>`                 |
+| refresh        |                                                                 | `<refresh>`               |                  |                        |
+| icon           | [OpenUI research](https://open-ui.org/components/icon.research) |                         | `<icon>`           | `<icon>`                 |
+| progress       | `<progress>`                                                    | `<progress>`              | `<progress>`       | `<progress>`             |
+| anchor         | a                                                               | `<a>`                       | `<navigator>`      | `<navigator>`            |
+| text           | `<span>`                                                        | `<text>`                  | `<text>`           | `<text>`                 |
+| text input     | `<input>`                                                       | `<input>`                 | `<input>`          | `<input>`                |
+| camera         | `<input>`                                                       | `<camera>`                |                  | `<camera>`               |
+| textarea       | `<textarea>`                                                    | `<textarea>`              | `<textarea>`       | `<textarea>`             |
+| checkbox       | `<input type="checkbox">`                                       | `<input type="checkbox">` | `<checkbox>`       | `<checkbox>`             |
+| radio          | `<input type="radio">`                                          | `<input type="radio">`    | `<radio>`          | `<radio>`                |
+| form           | `<form>`                                                        |                         | `<form>`           | `<form>`                 |
+| button         | `<button>`                                                      | `<input type="button">`   | `<button>`         | `<button>`               |
+| label          | `<label>`                                                         | `<label>`                 | `<label>`          | `<label>`                |
+| select         | [`<select>`](https://open-ui.org/components/select)               | `<select>`                | `<picker>`         | `<picker>`               |
+| slider         | `<input>`                                                         | `<slider>`                | `<slider>`         | `<slider>`               |
+| switch         | [OpenUI research](https://open-ui.org/components/switch)        | `<switch>`                | `<switch>`         | `<switch>`               |
+| picker         | [OpenUI proposal](https://open-ui.org/components/select)        | `<picker>`                | `<picker>`         | `<picker>`               |
+| image          | `<img>`                                                           | `<image>`                 | `<image>`          | `<image>`                |
+| audio          | `<audio>`                                                         |                         |                  | `<audio>`                |
+| video          | `<video>`                                                         | `<video>`                 | `<video>`          | `<video>`                |
+| canvas         | `<canvas>`                                                        | `<canvas>`                | `<canvas>`         | `<canvas>`               |
+| animation      |                                                                 | `<lottie>`                | `<lottie>`         | `<animation-video>`      |
+| web-view       | `<html>`                                                          | `<web>`                   | `<web-view>`       | `<web-view>`             |
+| map            |                                                                 | `<map>`                   | `<map>`            | `<map>`                  |
+| list           |                                                                 | `<list>`                  |                  |                        |
+| popup          | `<dialog>`                                                        | `<popup>`                 |                  |                        |
+| rtc-room       |                                                                 |                         |                  | `<rtc-room>`             |
+| ad             |                                                                 |                         |                  | `<ad>`                   |
+| payment        |                                                                 |                         |                  | `<inline-payment-panel>` |
+| comments       |                                                                 |                         |                  | `<comment-list>`         |
+| like           |                                                                 |                         |                  | `<like>`                 |
+| 3d-model       | `<model>` (WIP)                                                   |                         |                  | `<modelviewer>`          |
+| rating         |                                                                 | `<rating>`                |                  |                        |
+| marquee        |                                                                 | `<marquee>`               |                  |                        |
+| share-button   |                                                                 | `<share-button>`          |                  |                        |
+| drawer         |                                                                 | `<drawer>`                |                  |                        |
+| match-media    |                                                                 |                         | `<match-media>`    |                        |
+| aria-component |                                                                 |                         | `<aria-component>` |                        |
+| page metadata  |                                                                 |                         | `<page-meta>`      |                        |
 
