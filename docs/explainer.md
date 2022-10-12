@@ -18,7 +18,7 @@ This document aims to specify a set of common practices to define MiniApps Compo
 
 Although MiniApps Components share the same concept as Web Components, their capabilities and development features differ. The main differences are motivated by the architecture of the existing implementations along the MiniApp ecosystem following the MVVM pattern, based on components developed through domain-specific markup languages and without access to the standard DOM. 
 
-Even though the MiniApp Packaging specification recommends MiniApp agents to support standard Web Components, MiniApp vendors might opt to implement the internal components using the traditional MVVM architecture and, subsequently, manage them through non-standard mechanisms like virtual DOM (VDOM) or content interpolation.
+Even though the MiniApp Packaging specification recommends that MiniApp agents support standard Web Components, MiniApp vendors might opt to implement the internal components using the traditional MVVM architecture and, subsequently, manage them through non-standard mechanisms like virtual DOM (VDOM) or content interpolation.
 
 ## 2. Scope of work
 
