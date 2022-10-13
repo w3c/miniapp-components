@@ -704,6 +704,98 @@ Properties of the [Event interface](https://smartprogram.baidu.com/docs/develop/
 - `changedTouches`
 
 
+#### Lifecycle
+
+[Custom elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements) are extension of [HTML elements](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) that need to be registered to be used in the document. Apart from the inherited event handlers, custom elements have associated specific callbacks associated with their lifecycle statuses and events. 
+
+- `connectedCallback` invoked when the custom element is first connected to the document's DOM. 
+- `disconnectedCallback` invoked when the custom element is disconnected from the document's DOM.
+- `adoptedCallback` is invoked when the custom element is moved to a new document.
+- `attributeChangedCallback` is invoked when one of the custom element's attributes is added, removed, or changed. 
+
+
+##### Quick App (Xiaomi, Huawei)
+
+
+Quick App custom components implement the following lifecycle callbacks:
+
+- `onInit` triggered when all the data of the component is loaded and the system starts connecting the component.
+- `onReady` triggered when the component is rendered for the first time.
+- `onDestroy` triggered when the component is destroyed.
+
+
+```html
+<script>
+  export default {
+    onReady() {
+      console.log('Ready');
+    }  
+  }
+</script>
+```
+
+
+[More information](https://doc.quickapp.cn/framework/script.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1050).	
+
+##### Alipay Mini Program
+
+Quick App custom components implement the following lifecycle callbacks:
+
+- `onInit` triggered when the component is created.
+- `deriveDataFromProps` triggered when the component is created and before it is updated.
+- `didUpdate`	triggered when the component data has been updated.
+- `didMount` triggered when the component is rendered for the first time.
+- `didUnmount` triggered when the component is removed.
+
+Example:
+
+```js
+// /components/index/index.js
+Component ({
+  data: {
+    counter: 0, 
+  },
+  onInit ( ) {
+    this.setData ({
+      counter: 1 , 
+      is : this.is, 
+    });
+  },
+});
+```
+
+[More information](https://opendocs.alipay.com/mini/framework/component-lifecycle).	
+
+##### Baidu Smart Mini Program
+
+Smart Mini Programs define the following callbacks triggered in the different phases of the lifecycle:
+
+- `created` triggered when the component instance is created.
+- `attached` triggered when the component is attached to the document.
+- `ready` triggered when the component is rendered for the first time.
+- `detached` triggered when the component is removed from the document.
+
+These callbacks are defined in the `lifetimes` parameter of the component, as shown in the following example.
+
+```js
+// custom-component.js
+Component({
+    // ...
+    lifetimes: {
+        attached: function() {
+          console.log('Attached');
+        },
+        detached: function() {
+          console.log('Detached');
+        }
+    }
+    // ...
+});
+```
+
+[More information](https://smartprogram.baidu.com/docs/develop/framework/custom-component_lifetimes/).
+
+
 #### Stylesheets (CSS Profile)
 
 MiniApp vendors use CSS3 profiles (a subset of the [standard](https://www.w3.org/TR/CSS/)) with minor additions.
