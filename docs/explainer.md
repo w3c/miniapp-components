@@ -24,9 +24,10 @@ Even though the MiniApp Packaging specification recommends that MiniApp agents s
 
 The MiniApp Components specification aims to collect the minimum set of common features from all the MiniApp versions, including: 
 
-- Built-in components (elements), names, and properties
-- Event handling and basic event types 
-- High-level features for component definition
+- Built-in components (elements), names, and properties;
+- Event handling and basic event types;
+- High-level features for component definition;
+- Lifecycle.
 
 ### Out of scope
 
