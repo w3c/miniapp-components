@@ -5,6 +5,38 @@
 - Zitao Wang (Huawei)
 - Martin Alvarez (Huawei)
 
+## Table of contents
+
+- [MiniApp Components Explainer](#miniapp-components-explainer)
+  - [Authors](#authors)
+  - [1. Introduction](#1-introduction)
+    - [What is this?](#what-is-this)
+    - [Why should we care?](#why-should-we-care)
+  - [2. Scope of work](#2-scope-of-work)
+    - [Out of scope](#out-of-scope)
+    - [What kind of document will be produced?](#what-kind-of-document-will-be-produced)
+  - [3. Key considerations](#3-key-considerations)
+    - [Differences with Web Components](#differences-with-web-components)
+      - [Component resources](#component-resources)
+      - [Component markup language](#component-markup-language)
+      - [Templating](#templating)
+      - [Component reuse (instantiation)](#component-reuse-instantiation)
+      - [Component properties (definition)](#component-properties-definition)
+      - [Component arguments](#component-arguments)
+      - [Data binding](#data-binding)
+      - [Event binding](#event-binding)
+      - [Event listener definition](#event-listener-definition)
+      - [Event types](#event-types)
+      - [Event interface properties](#event-interface-properties)
+      - [Lifecycle](#lifecycle)
+      - [Stylesheets (CSS Profile)](#stylesheets-css-profile)
+      - [Stylesheets (inline declaration)](#stylesheets-inline-declaration)
+      - [Web Components](#web-components)
+      - [Stylesheets (import)](#stylesheets-import)
+      - [Component interface (properties)](#component-interface-properties)
+      - [Component interface (methods)](#component-interface-methods)
+    - [Essential MiniApp elements](#essential-miniapp-elements)
+
 ## 1. Introduction
 
 ### What is this?
