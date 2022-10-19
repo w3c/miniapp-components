@@ -88,7 +88,7 @@ The main differences identified are:
 
 - __Component resources__. MiniApps require specific resource types, including markup languages and file system structure. 
 - __Component interface__. MiniApps components have specific properties and methods. Access to global variables and page elements differs in all versions. 
-- __Template definition__. MiniApps have an advanced `{{moustache}}` templating mechanism with data binding and conditional rendering.
+- __Template definition__. MiniApps have an advanced one-way data binding, with a `{{moustache}}` templating mechanism, and conditional rendering.
 - __Event management__. MiniApp event listeners are similar, but developers cannot use the `addEventListener()` method from the logic. Event interfaces are different.
 - __Stylesheets__. MiniApps are based on CSS3 profiles, with minor additions. Imports, properties, and rules are similar. 
 
@@ -505,7 +505,7 @@ Properties as instance attributes
 
 #### Data binding
 
-All the MiniApp versions have [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) to bind variables from the logic part of the component.
+All the MiniApp versions use [`{{moustache}}` notation](https://en.wikipedia.org/wiki/Mustache_%28template_system%29) to unidirectionally bind variables from the component's logic to the rendering templates.
 
 ##### Quick App (Xiaomi, Huawei)
 
