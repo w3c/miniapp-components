@@ -63,9 +63,9 @@ The MiniApp Components specification aims to collect the minimum set of common f
 
 ### Out of scope
 
-- Definition of HTML elements
+- Definition of HTML elements.
 - Definition of behavior or appearance of elements.
-- Definition of a markup language for MiniApp
+- Definition of a markup language for MiniApps.
 
 ### What kind of document will be produced?
 
