@@ -354,7 +354,7 @@ How developers reuse the components defined in the [previous section](#templatin
 
 ##### Alipay Mini Program
 
-AXML’s `<import>` and `<template is=...` elements.
+AXML's `<import>` and `<template is=...` elements.
 
 ```xml
 <import src="./header.axml" />
