@@ -99,7 +99,7 @@ Depending on the implementation, MiniApp components are defined using specific f
 
 ##### Quick App (Xiaomi, Huawei)
 
-Quick App uses [UX documents](https://doc.quickapp.cn/framework/source-file.html) (`.ux`) to describe and use components. These documents contains three sections, `<template>`, `<script>`, and `<style>`, that include the specific template definition, logic and styling respectively. 
+Quick App uses [UX documents](https://doc.quickapp.cn/framework/source-file.html) (`.ux`) to describe and use components. These documents contain three sections, `<template>`, `<script>`, and `<style>`, that include the specific template definition, logic, and styling respectively. 
 
 Example:
 
