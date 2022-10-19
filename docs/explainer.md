@@ -233,7 +233,7 @@ Although the MiniApp components templates are based on HTML, the concrete implem
 
 ##### Quick App (Xiaomi, Huawei)
 
-Quick Apps use a concrete notation for UX documents. Scripts, stylesheets and templates are defined under the same document, marked with the elements `<script>`, `<style>`, and `<template>`. 
+Quick Apps use a concrete notation for UX documents. Scripts, stylesheets, and templates are defined in the same document, marked with the elements `<script>`, `<style>`, and `<template>`. 
 
 The component [templates are described](https://doc.quickapp.cn/framework/template.html) as an XML fragment within the `<template>` section, using HTML-like elements.
 
