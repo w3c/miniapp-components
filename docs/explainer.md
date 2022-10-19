@@ -741,7 +741,7 @@ Properties of the [Event interface](https://smartprogram.baidu.com/docs/develop/
 [Custom elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements) are extensions of [HTML elements](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) that need to be registered to be used in the document. Apart from the inherited event handlers, custom elements have associated specific callbacks associated with their lifecycle statuses and events. 
 
 - `connectedCallback` is invoked when the custom element is first connected to the document's DOM. 
-- `disconnectedCallback` invoked when the custom element is disconnected from the document's DOM.
+- `disconnectedCallback` is invoked when the custom element is disconnected from the document's DOM.
 - `adoptedCallback` is invoked when the custom element is moved to a new document.
 - `attributeChangedCallback` is invoked when one of the custom element's attributes is added, removed, or changed. 
 
