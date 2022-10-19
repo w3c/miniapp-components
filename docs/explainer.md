@@ -87,7 +87,7 @@ This section analyzes the differences between the standard Web Components and th
 The main differences identified are:
 
 - __Component resources__. MiniApps require specific resource types, including markup languages and file system structure. 
-- __Component interface__. MiniApp components have specific properties and methods. Access to global variables and page elements differs in all versions. 
+- __Component interface__. MiniApps components have specific properties and methods. Access to global variables and page elements differs in all versions. 
 - __Template definition__. MiniApps have an advanced `{{moustache}}` templating mechanism with data binding and conditional rendering.
 - __Event management__. MiniApp event listeners are similar, but developers cannot use the `addEventListener()` method from the logic. Event interfaces are different.
 - __Stylesheets__. MiniApps are based on CSS3 profiles, with minor additions. Imports, properties, and rules are similar. 
