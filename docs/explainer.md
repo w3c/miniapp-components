@@ -661,7 +661,7 @@ Event types by default are different. Not all the standard [event types](https:/
 
 Different vendors use different names for the same event type. For example, `tap` event in Alipay and Baidu Mini Programs, but `click` in Quick Apps. 
 
-Also, implementations are different even if vendors use the same name for the same event. For example, the `longtap` event, Alipay Mini Programs trigger the event 500 ms after the first contact, while Baidu Smart Mini Programs' period is 350 ms.
+Also, implementations are different even if vendors use the same name for the same event. For example, the `longtap` event: Alipay Mini Programs trigger the event 500 ms after the first contact, while Baidu Smart Mini Programs' period is 350 ms.
 
 ##### Quick App (Xiaomi, Huawei)
 
