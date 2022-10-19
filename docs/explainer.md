@@ -738,7 +738,7 @@ Properties of the [Event interface](https://smartprogram.baidu.com/docs/develop/
 
 #### Lifecycle
 
-[Custom elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements) are extension of [HTML elements](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) that need to be registered to be used in the document. Apart from the inherited event handlers, custom elements have associated specific callbacks associated with their lifecycle statuses and events. 
+[Custom elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements) are extensions of [HTML elements](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) that need to be registered to be used in the document. Apart from the inherited event handlers, custom elements have associated specific callbacks associated with their lifecycle statuses and events. 
 
 - `connectedCallback` invoked when the custom element is first connected to the document's DOM. 
 - `disconnectedCallback` invoked when the custom element is disconnected from the document's DOM.
