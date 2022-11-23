@@ -2,8 +2,9 @@
 
 ## Authors
 
-- Zitao Wang (Huawei)
 - Martin Alvarez (Huawei)
+- Thomas Steiner (Google)
+- Zitao Wang (Huawei)
 
 ## Table of contents
 
