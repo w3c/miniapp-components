@@ -230,7 +230,7 @@ Component ({
 
 #### Component markup language
 
-Although the MiniApp components templates are based on HTML, the concrete implementations use their domain-specific markup languages.    
+Although the MiniApp components templates are based on HTML, the concrete [implementations use their domain-specific markup languages](https://web.dev/mini-app-markup-styling-and-scripting/#markup-languages).    
 
 ##### Quick App (Xiaomi, Huawei)
 
