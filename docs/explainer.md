@@ -183,7 +183,7 @@ Baidu Smart Mini Programs enable the creation of components using four resources
 ```xml
 <!-- /components/custom/custom.swan -->
 <view class="name" bindtap="tap">
-    {{name}}{{age}}
+    {{name}} {{age}}
 </view>
 ```
 
