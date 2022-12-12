@@ -886,7 +886,7 @@ The different MiniApp versions use the same `style` attribute to declare inline 
 <view style="color: #ffffff"> swan </view>
 ```
 
-#### Web Components
+##### Web Components
 
 `style` attribute in the elements.	
 
