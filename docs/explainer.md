@@ -32,7 +32,6 @@
       - [Lifecycle](#lifecycle)
       - [Stylesheets (CSS Profile)](#stylesheets-css-profile)
       - [Stylesheets (inline declaration)](#stylesheets-inline-declaration)
-      - [Web Components](#web-components)
       - [Stylesheets (import)](#stylesheets-import)
       - [Component interface (properties)](#component-interface-properties)
       - [Component interface (methods)](#component-interface-methods)
