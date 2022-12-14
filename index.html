@@ -161,10 +161,40 @@
 
   <section id="sec-scripting">
     <h2>Scripting Resources</h2>
-    <p></p>
-    <div class="ednote">
-      Restrictions in the scripting resources.
-    </div>
+    <p>
+      MiniApp user agents support scripting resources to define the business logic and operation of the components. Although the aim of this specification is not to recommend a specific scripting language, the document considers ECMAScript (broadly known as JavaScript) [[JAVASCRIPT]] as the scripting language by default.
+    </p>
+    <p>
+      As indicated in [[MINIAPP-PACKAGING]], each MiniApp component has a scripting file (with the `.js` extension). Since each component has its own scope, the functions and variables defined in the scripting file have global scope across the entire component, but they are isolated from the rest of the MiniApp components.     
+    </p>
+    <p>
+      Scripts in components support module management. Modules have an independent scope, so the elements defined in a module are private by default and invisible to other modules. The exposition of the concrete module variables or functions MUST be explicitly made through the export declarations. Only local modules (i.e., hosted in the same package) MAY be imported.
+    </p>
+    <p data-cite="HTML">
+      HTML resources (with the .html extension) MAY import local scripts, such as auxiliary libraries shared by the MiniApp components. These script documents SHOULD be hosted in the `/common` directory as defined in [[MINIAPP-PACKAGING]], so they will be available to any component in the package. As in the case of scripting modules, only local scripts (i.e., hosted in the same package) will be accessible to the components. Developers MAY include any scripting resource hosted in the same package from the HTML, using the `script` element, equivalent to [^script^] in HTML, with the [^script/src^] attribute to specify the URI of the document to import. The functions and variables of the imported script will have a limited scope across the entire component.
+    </p>
+    <pre class="example" title="Scripting modules import"><code>//Static import
+import utils from '../Common/utils.js'
+
+// Dynamically
+const utils = require('/Common/utils.js')
+    </code></pre>
+
+    <pre class="example" title="Loading scripts from HTML"><code>&lt;script src="../Common/utils.js"&gt;&lt;script&gt;</code></pre>
+    
+    <section id="sec-scripting-constraints">
+      <h3>Conformance of scripting resources</h3>
+
+      <p>The script language in MiniApp packages is not restricted to ECMAScript (JavaScript). Still, this document uses it as a reference to illustrate the features that MUST be implemented and supported by MiniApps user agents.</p>
+
+      <ul class="conformance" data-cite="HTML">
+        <li>User agents MUST NOT allow the <a href="https://tc39.es/ecma262/#sec-eval-x">eval()</a> function in scripts to prevent security risks.</li>
+        <li>Likewise, the {{WindowOrWorkerGlobalScope/setTimeout()}} and {{WindowOrWorkerGlobalScope/setInterval()}} functions MUST only support the first parameter as a callback function, preventing the execution of code dynamically.</li>
+        <li>User agents MUST NOT allow the creation of functions dynamically.</li>
+        <li>Each script module has its own independent scope.</li>
+        <li>Only modules and scripts included within the same package could be imported. No external scripts can be loaded.</li>
+      </ul>
+    </section>
   </section>
 
   <section id="sec-stylesheets">
