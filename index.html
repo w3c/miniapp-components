@@ -177,10 +177,49 @@
 
   <section id="sec-lifecycle">
     <h2>Component Lifecycle</h2>
-    <p></p>
-    <div class="ednote">
-      Explanation and links to MINIAPP-LIFECYCLE.
+    <p>
+      The lifecycle of a component refers to the process from its creation to its destruction. Every MiniApp component implements a collection of lifecycle callbacks triggered at the different stages of the component lifespan. As described in [[MINIAPP-LIFECYCLE]], MiniApp pages and components are rendered on the [=Document/View layer=], while the events involving the lifecycle management are processed on the [=Document/Logic layer=] of the user agent. 
+    </p>
+    
+    <p data-cite="ECMASCRIPT">
+      The component lifecycle callbacks are `created`, `attached`, `ready`, `detached`, `show`, and `hide`. The corresponding values are either a Web IDL {{Function}} callback function type value or `null`. By default, the value of each entry is `null`. 
+    </p>
+    <dl>
+      <dt>`created`</dt>
+      <dd>Callback function that indicates when a component is created in the system. This callback is triggered when a custom component is first created but not necessarily attached to the page. This callback, triggered only once, is usually used to initialize the component's properties.</dd>
+      <dt>`attached`</dt>
+      <dd>This callback is triggered when the component, already created, is attached to the document tree of a page. It is usually used for initializing the data for display, such as loading images and starting animations.</dd>
+      <dt>`ready`</dt>
+      <dd>Once a custom component is attached to the page document tree, the user agent renders the component in the [=Document/View layer=], performing the calculations and adjustment of the size and the position of the component layout and its contents. This callback is triggered after the layout calculation is complete and ready to be rendered.</dd>
+      <dt>`detached`</dt>
+      <dd>This callback is triggered when the node of a custom component is removed from the page document tree. It is usually used to stop animations or halt asynchronous executions.</dd>
+      <dt>`show`</dt>
+      <dd>This callback is triggered once the user agent renders the component to the user.</dd>
+      <dt>`hide`</dt>
+      <dd>This callback is triggered when the component is hidden from the user.</dd>
+    </dl>  
+    <div class="note" title="Differences between MiniApp Components and Web Components">
+      <p>
+        There are some differences between HTML Custom Elements and MiniApp component lifecycles:
+      </p>
+      <ul>
+        <li>The `attached` and `detached`callbacks correspond to the `connectedCallback` and `disconnectedCallback` functions in standard Custom Elements, respectively, with the same functionality.</li>
+        <li>MiniApp user agents do not support the migration of components in the document scope. Therefore, there is no `adopted` state in MiniApp components.</li>
+        <li>MiniApp components have `created` and `ready` states with no standard equivalence. These callbacks are defined to notify changes in the creation status between the two main layers, the [=Document/Logic layer=] and the [=Document/View layer=]), running in separate threads.</li>
+        <li>MiniApps do not support HTML Custom Elements' `attributeChangedCallback`. This callback is triggered when any attribute of a custom element changes, including adding, deleting, and updating. As shown in the <a href="#sec-templating">templating section</a>, the MiniApp framework only supports unidirectional data binding and cannot directly interact with the DOM. Therefore, any change in the DOM attribute cannot trigger any similar event.</li>
+      </ul> 
     </div>
+    <aside class="example" title="Lifecycle events of a MiniApp component">
+      <p>
+        Once the user agent starts the execution and rendering of a component in a page:
+      </p>
+      <ol>
+        <li>The component is `created` in the system. The callback initializes the properties and data under the scope of the component. The initialization is performed from the scripting file (with `.js` extension) of the component.</li>
+        <li>The node of the component is inserted into the page document tree, triggering the `attached` callback.</li>
+        <li>The user agent analyzes the layout, calculating and adjusting the size and position of its elements and contents.</li>
+        <li>Once the user agent completes the component's rendering, the `ready` event is triggered.</li>
+      </ol>
+    </aside>
   </section>
 
   <section id="sec-elements">
