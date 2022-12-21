@@ -112,12 +112,108 @@
     </section>
   </section>
 
-  <section id="sec-declaration">
+  <section id="sec-declaration" data-cite="HTML">
     <h2>Component Declaration</h2>
-    <p></p>
-    <div class="ednote">
-      Component interface (properties)
-    </div>
+    <p>
+      MiniApp user agents provide a series of essential built-in components (also called native elements or native components) equivalent to the standard [=HTML Elements=]. These built-in elements allow developers to create customized components that can be instantiated and re-used by other MiniApp components. 
+    </p>
+    <p>
+      Similarly to the standard [=HTML Elements=], developers may use the MiniApp built-in elements to create and customize components. A user-defined component requires three main resources [[MINIAPP-PACKAGING]]:
+    </p>
+    <ul>
+       <li>An HTML resource (e.g., `my-component.html`) to describe the component structure and static content.</li>
+       <li>A style sheet (e.g., `my-component.css`) to define the styles of the component (it can be blank).</li>
+       <li>A scripting resource (e.g., `my-component.js`) that describes the component's business logic and behavior.</li>
+    </ul>
+    <p>
+      Developers use these HTML resources to define the structure and static content of the component, using the built-in elements and other custom components existing in the package. 
+    </p>
+    <p>
+      A MiniApp component encapsulates its logic and stylesheet. So, the default style sheet and scripts only affect the elements and components defined in the HTML resource. Still developers may use other scripts and style sheets upon explicit declaration. 
+    </p>
+    <p>
+      MiniApp user agents specify a mechanism to send data from the component's scripting resource (e.g., `my-component.js`) run in the logic layer to the components and elements in the rendering layer during runtime execution. The scripting resources are implemented as ECMAScript Modules (ESM). These, associated with components, include <a href="https://262.ecma-international.org/13.0/#sec-object-initializer">object initializers</a> with callback functions used in events and data properties used in events accessible from the rendering layer. They may also have other auxiliary variables, constants, and methods needed for the component's logic.   
+    </p>
+    <pre class="example" title="Component object initializer"><code>// my-component.js
+
+export default { 
+  // properties
+  // event listeners
+  // methods 
+}
+    </code></pre>
+
+    <section id="sec-properties">
+      <h3>Component Properties and Methods</h3>
+      <p>
+        The scripting resources (e.g., `my-component.js`) use the `export` keyword to expose an object with the component's data properties and methods, making them available to the rendering layer.     
+      </p>
+      <p>
+        The component's data properties are usually defined by the key `props`, whose value is an object of key-value properties. The key in the object determines the property's name, and its value is an object that defines the <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values">data type</a> (`type` member) and value (`value` member).  
+      </p>
+      <pre class="example" title="Component property declaration"><code>// my-component.js
+
+export default {
+  props: {
+    foo: {
+      type: String,
+      value: 'bar'
+    }
+  }
+}
+      </code></pre>
+      <p>
+        The definition could avoid the data type, allowing any.  
+      </p>
+      <pre class="example" title="Component property declaration without type"><code>// my-component.js
+
+export default {
+  props: {
+    foo: {
+      value: 'bar'
+    }
+  }
+}
+      </code></pre>
+      <p>
+        Developers can also define the property's name without initializing it with a default value. This could be useful if the property is set up within the methods of the component. Properties could also be defined as a list of names.
+      </p>
+      <pre class="example" title="Declaration of component properties in an array"><code>// my-component.js
+
+export default { 
+  props: ['foo','button_name','title_card'],
+}
+      </code></pre>
+      <p>
+        Internal methods and callback functions of a component are also defined in the object initializer of the primary scripting resource. A property key represents the method's name, and the value includes its definition.
+      </p>
+      <pre class="example" title="Declaration of a component callback function"><code>// my-component.js
+
+export default {
+  loadMore: function(event) {
+    console.log(event);
+  }
+}
+      </code></pre>
+
+      <section id="sec-methods">
+        <h4>Built-in Methods</h4>
+        <p>
+          Although they are similar, MiniApp components do not implement the methods and attributes of the {{HTMLElement}} interface. The decoupling of logic and rendering layers causes the logic of the component instance cannot directly access the DOM of the page. MiniApp user agents solve this challenge with specific interfaces that include built-in properties and methods exposed on the component public instance (i.e., accessible through `this`) for the following purposes:
+        </p>
+        <ul>
+          <li>Access/add/modify a data property.</li>
+          <li>Get the root component instance of the current component tree.</li>
+          <li>Get the parent component instance.</li>
+          <li>Get a child component instance based on its identifier.</li>
+          <li>Support communication between relatives. Components trigger events that can be propagated to their parents, along with their associated data. The parent component gets the  child's instance, accessing its data and methods.</li>          
+        </ul>
+      </section>
+      <div class="ednote">
+        How to register a component? Just with the manifest?
+      </div>
+    </section>
+
   </section>
 
   <section id="sec-reuse">
@@ -125,13 +221,6 @@
     <p></p>
     <div class="ednote">
       How to instantiate a component. Passing arguments, attributes. Access to component nodes.
-    </div>
-  </section>
-
-  <section id="sec-properties">
-    <h2>Component Properties and Methods</h2>
-    <p></p>
-    <div class="ednote">
     </div>
   </section>
 
