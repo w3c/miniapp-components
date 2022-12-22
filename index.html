@@ -148,19 +148,34 @@
       <p>
         Elements in components can have event handlers specified. An event handler is composed of a value, usually an internal reference, and a listener, a callback function responsible for processing the algorithm for that event handler. In MiniApp components, the event handlers are exposed using event handler content attributes. These handlers are exposed through a name that starts with a specific keyword (`on`, `bind`, or others), followed by the event type identifier.
       </p>
-      <pre class="example"><code>&lt;!-- my_component.html --&gt;
+      <pre class="example"><code>&lt;!-- my-component.html --&gt;
   &lt;text onclick="loadMore"&gt;example&lt;/text&gt; 
     &lt;!-- or --&gt;
   &lt;view bindtap="loadMore"&gt;example&lt;/view&gt;
 </code></pre>
       <p data-cite="DOM">
-        Due to the decoupled architecture, MiniApp elements do not implement the {{EventTarget}} interface, so they do not implement the {{EventTarget/addEventListener()}} function. Therefore, event binding is only performed statically using handler content attributes on the component elements. The callback function associated with the event handler is specified in the scripting resource in scope.
+        Due to the decoupled architecture, MiniApp elements do not implement the {{EventTarget}} interface, so they do not implement the {{EventTarget/addEventListener()}} function. Therefore, event binding is only performed statically using handler content attributes on the component elements. The callback function associated with the event handler is specified in the scripting resource in scope, as a member of the exported anonymous object.
       </p> 
-      <pre class="example"><code>&lt;!-- my_component.js --&gt;
+      <pre class="example"><code>// my-component.js
+
   export default {
     loadMore(event) {
       console.log(event);
-    }  
+    }
+  }
+      </code></pre>
+      <p>
+        Likewise, developers can also define the callback functions to process the <a href="#sec-lifecycle">lifecycle events</a>.
+      </p>
+      <pre class="example"><code>// my-component.js
+
+  export default {
+    oncreated() {
+      console.log('Component created!');
+    },
+    onready() {
+      console.log('Component is ready!');
+    }
   }
 </code></pre>
     </section>
