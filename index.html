@@ -186,7 +186,7 @@
       Developers may use the <a href="https://www.w3.org/TR/css-cascade-4/#at-ruledef-import" data-link-type="dfn">@import</a> rule to import style rules from other style sheets. If an <a href="https://www.w3.org/TR/css-cascade-4/#at-ruledef-import" data-link-type="dfn">@import</a> rule refers to a valid style sheet hosted locally in the package, user agents treat the imported style sheet as if its contents were written in place of the @import rule defined in [[CSS-CASCADE-4]].
     </p>
     <pre class="example" title="Import of style sheet from another style sheet"><code>/** scoreboard.css **/
-@import  "../Common/buttons.css";
+@import  "../common/buttons.css";
 
 .checkout  {
   color: yellow; 
@@ -198,10 +198,10 @@
 
     </p>
     <pre class="example" title="Import of style sheet from the HTML document"><code>&lt;!-- scoreboard.html --&gt;
-&lt;style src="/Common/base.css"&gt;&lt;/style&gt;
+&lt;style src="/common/base.css"&gt;&lt;/style&gt;
 
 &lt;style&gt;
-  @import '/Common/base.css';
+  @import '/common/base.css';
   .impact {
     color: red;
   }
