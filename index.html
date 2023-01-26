@@ -180,7 +180,7 @@
       MiniApp user agents are not expected to implement full support of CSS. Instead, they MAY define specific CSS profiles with subsets of CSS properties, selectors, colors, rules, and other CSS specifications, aiming to simplify the development process and meet all their concrete requirements. 
     </p>  
     <p>
-      Every MiniApp component has a style sheet (with the `.css` extension) associated by default. Developers MAY include additional style sheets to reuse common styles among the components (e.g., styles for buttons or dialogs). The shared style sheets SHOULD be hosted in the `/Common` directory in the package.
+      Every MiniApp component has a style sheet (with the `.css` extension) associated by default. Developers MAY include additional style sheets to reuse common styles among the components (e.g., styles for buttons or dialogs). The shared style sheets SHOULD be hosted in the <a href="https://www.w3.org/TR/miniapp-packaging/#common-directory">`/common`</a> directory in the package.
     </p>
     <p>
       Developers may use the <a href="https://www.w3.org/TR/css-cascade-4/#at-ruledef-import" data-link-type="dfn">@import</a> rule to import style rules from other style sheets. If an <a href="https://www.w3.org/TR/css-cascade-4/#at-ruledef-import" data-link-type="dfn">@import</a> rule refers to a valid style sheet hosted locally in the package, user agents treat the imported style sheet as if its contents were written in place of the @import rule defined in [[CSS-CASCADE-4]].
