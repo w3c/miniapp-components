@@ -174,7 +174,8 @@
     <p data-cite="HTML">
       HTML resources (with the .html extension) MAY import local scripts, such as auxiliary libraries shared by the MiniApp components. These script documents SHOULD be hosted in the `/common` directory as defined in [[MINIAPP-PACKAGING]], so they will be available to any component in the package. As in the case of scripting modules, only local scripts (i.e., hosted in the same package) will be accessible to the components. Developers MAY include any scripting resource hosted in the same package from the HTML, using the `script` element, equivalent to [^script^] in HTML, with the [^script/src^] attribute to specify the URI of the document to import. The functions and variables of the imported script will have a limited scope across the entire component.
     </p>
-    <pre class="example" title="Scripting modules import"><code>//Static import
+    <pre class="example" title="Scripting modules import"><code>// Static import
+
 import utils from '../Common/utils.js'
 
 // Dynamically
