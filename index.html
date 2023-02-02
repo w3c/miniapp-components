@@ -125,7 +125,8 @@
     <p>
       A component may use other custom components registered and defined within the package. For that, developers must import the custom component in the parent component declaration. The imported component is exposed to the component template. It will be available as another tag in the template, identified by a unique key.
     </p>
-    <pre class="example" title="Import of custom component"><code>&lt;!-- my-component.html -&gt;
+    <pre class="example" title="Import of custom component"><code>&lt;!-- my-component.html --&gt;
+
 &lt;import src="./cool-button" name="cool-button" /&gt;
 
 &lt;div&gt;
