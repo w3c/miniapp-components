@@ -203,7 +203,8 @@
         There are some differences between HTML Custom Elements and MiniApp component lifecycles:
       </p>
       <ul>
-        <li>The `attached` and `detached`callbacks correspond to the `connectedCallback` and `disconnectedCallback` functions in standard Custom Elements, respectively, with the same functionality.</li>
+        <li>The `attached` and `detached` callbacks correspond to the `connectedCallback` and `disconnectedCallback` functions in standard Custom Elements, respectively, with the same functionality.</li>
+
         <li>MiniApp user agents do not support the migration of components in the document scope. Therefore, there is no `adopted` state in MiniApp components.</li>
         <li>MiniApp components have `created` and `ready` states with no standard equivalence. These callbacks are defined to notify changes in the creation status between the two main layers, the [=Document/Logic layer=] and the [=Document/View layer=]), running in separate threads.</li>
         <li>MiniApps do not support HTML Custom Elements' `attributeChangedCallback`. This callback is triggered when any attribute of a custom element changes, including adding, deleting, and updating. As shown in the <a href="#sec-templating">templating section</a>, the MiniApp framework only supports unidirectional data binding and cannot directly interact with the DOM. Therefore, any change in the DOM attribute cannot trigger any similar event.</li>
