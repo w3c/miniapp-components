@@ -628,13 +628,15 @@ In MiniApps, listeners must be defined in specific places in the logic of the co
 
 ##### Alipay Mini Program
 
-`function()` declaration in the root of the `Page({})` declaration in the script.
+`function()` declaration in the root of the `methods` object within the `Component({})` declaration in the script.
 
 ```js
-Page ({
-  loadMore(e) {
-    console.log(e);
-  },
+Component ({
+  methods: {
+    loadMore(e) {
+      console.log(e);
+    }
+  }
 });
 ```
 
@@ -642,7 +644,7 @@ Page ({
 
 ##### Baidu Smart Mini Program
 
-`function()` declaration in the root of the `Page({})` declaration in the script.
+`function()` declaration in the root of the `Component({})` declaration in the script.
 
 ```js
 Page({
