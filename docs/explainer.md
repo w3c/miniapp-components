@@ -644,14 +644,16 @@ Component ({
 
 ##### Baidu Smart Mini Program
 
-`function()` declaration in the root of the `Component({})` declaration in the script.
+`function()` declaration in the root of the `methods` object within the `Component({})` declaration in the script.
 
 ```js
-Page({
-  loadMore(e) {
-    swan.showToast(e.type);
+Component({
+  methods: {
+    loadMore(e) {
+      swan.showToast(e.type);
+    }
   }
-});
+})
 ```
 
 [More information](https://smartprogram.baidu.com/docs/develop/framework/view_incident/).
