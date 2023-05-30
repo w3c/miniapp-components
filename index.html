@@ -199,6 +199,28 @@ const utils = async import('/common/utils.js')
         <li>Only modules and scripts included within the same package could be imported. No external scripts can be loaded.</li>
       </ul>
     </section>
+
+    <section id="sec-custom-scripts">
+      <h3>Custom scripting resources</h3>
+
+      <p>Some MiniApp user agents MAY support custom scripting formats to assist developers in building user interfaces. These formats are usually subsets of ECMAScript, restricted to only variables and functions that can be directly imported as a module and used from the rendering templates. Specifications vary depending on the implementation, and they use specific file extensions to identify the resource type.</p>
+
+    <pre class="example" title="Baidu Smart Mini Programs and Alipay Mini Programs use SJS (Safe/Subset JavaScript) resources, identified by the `.sjs` file extension"><code>  // pages/index/foo.sjs
+const message = 'hello sjs';
+const format = num => num.toFixed(2);
+export default {
+  message,
+  format
+};</code></pre>
+
+<pre class="example" title="Baidu Smart Mini Programs and Alipay Mini Programs use &lt;import-sjs&gt; element to import the module"><code>&lt;!-- pages/index/index.axml --&gt;
+
+&lt;import-sjs from="./foo.sjs" name="utils" /&gt;
+
+&lt;view&gt;{{utils.message}}&lt;/view&gt;
+&lt;view&gt;{{utils.format(3.14159)}}&lt;/view&gt;</code></pre>
+    </section>
+
   </section>
 
   <section id="sec-stylesheets">
