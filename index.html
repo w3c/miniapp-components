@@ -199,11 +199,11 @@
         <dt>`click` or `tap`</dt>
         <dd>Like the <a href="https://www.w3.org/TR/uievents/#event-type-click" data-link-type="dfn">click</a></th> event type defined in [[UIEVENTS]], this event is dispatched on the topmost event target indicated by the pointer when the user presses down and releases the primary pointer button or otherwise activates the pointer in a manner that simulates such an action.</dd>
         <dt>`longtap` or `longpress`</dt>
-        <dd>The `longpress` or `longtap` event type is dispatched on the topmost component (event target) indicated by the pointer when the user presses down, holds for at least (<mark>@@@ms@@@</mark>), and releases the primary pointer button or otherwise activates the pointer in a manner that simulates such an action.</dd>
+        <dd>The `longpress` or `longtap` event type is dispatched on the topmost component (event target) indicated by the pointer when the user presses down, holds for a specific period, and releases the primary pointer button or otherwise activates the pointer in a manner that simulates such an action.</dd>      
       </dl>
-      <div class="ednote">
-        Could we define the minimum period to be considered as a long press?
-      </div>      
+      <p class="note">
+        The minimum value of the longpress or longtap period may vary depending on the implementation (e.g., <a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/view/ViewConfiguration.java#77">Android's default timeout is 400 ms</a>). Some platforms may allow developers to change the value by default.
+      </p>      
     </section>
   </section>
 
