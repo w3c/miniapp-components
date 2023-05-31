@@ -136,7 +136,8 @@
     </p>
     <pre class="example" title="Component object initializer"><code>// my-component.js
 
-export default { 
+export default {
+  // data attributes 
   // properties
   // event listeners
   // methods 
@@ -144,12 +145,22 @@ export default {
     </code></pre>
 
     <section id="sec-properties">
-      <h3>Component Properties and Methods</h3>
+      <h3>Component Data, Properties and Methods</h3>
       <p data-cite="MINIAPP-LIFECYCLE">
-        The scripting resources (e.g., `my-component.js`) use the `export` keyword to expose an object with the component's data properties and methods, making them available to the [=Document/View layer=].     
+        The scripting resources (e.g., `my-component.js`) use the `export` keyword to expose an object with the component's data, properties, and methods, making them available to the [=Document/View layer=].     
       </p>
       <p>
-        The component's data properties are usually defined by the key `props`, whose value is an object of key-value properties. The key in the object determines the property's name, and its value is an object that defines the <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values">data type</a> (`type` member) and value (`value` member).  
+        Components may have <strong>data attributes</strong>. These attributes are variables that store information specific to that component and usually hold component states that can influence the logic and UI of the application. These attributes are generally defined directly as part of the component's definition.
+      </p>
+      <pre class="example" title="Component data attribute declaration"><code>// my-component.js
+
+export default {
+  color: 'Red',
+  title: 'My component'
+}
+      </code></pre>      
+      <p>
+        A <strong>property</strong> is an attribute that can be assigned to the component when it is instantiated, allowing for customization and dynamic behavior. Properties can be considered variables initialized when passed down to the component and can hold a value and be updated as needed. Properties are usually defined by the key `props`, whose value is an object of key-value properties. The key in the object determines the property's name and its value is an object that defines the <a href="https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values">data type</a> (`type` member) and value (`value` member).  
       </p>
       <pre class="example" title="Component property declaration"><code>// my-component.js
 
@@ -181,11 +192,15 @@ export default {
       <pre class="example" title="Declaration of component properties in an array"><code>// my-component.js
 
 export default { 
-  props: ['foo','button_name','title_card'],
+  props: ['foo','button','title'],
 }
       </code></pre>
+      <pre class="example" title="Example of component defining a child component with properties"><code>// parent-component.html
+&lt;my-comp button="Next" title="Item #1"&gt;
+      </code></pre>
+      
       <p>
-        Internal methods and callback functions of a component are also defined in the object initializer of the primary scripting resource. A property key represents the method's name, and the value includes its definition.
+        Internal <strong>methods and callback functions</strong> of a component are also defined in the object initializer of the primary scripting resource. A property key represents the method's name, and the value includes its definition.
       </p>
       <pre class="example" title="Declaration of a component callback function"><code>// my-component.js
 
@@ -193,8 +208,7 @@ export default {
   loadMore: function(event) {
     console.log(event);
   }
-}
-      </code></pre>
+}     </code></pre>
 
       <section id="sec-methods">
         <h4>Built-in Methods</h4>
