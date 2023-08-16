@@ -30,6 +30,10 @@
         branch: "main",
       },
       localBiblio: {
+        "CSS-SNAPSHOT": {
+          title: "CSS Snapshot",
+          href: "https://www.w3.org/TR/CSS/"
+        },
       },
       a11y: true,
     };
@@ -168,11 +172,49 @@
   </section>
 
   <section id="sec-stylesheets">
-    <h2>Stylesheets</h2>
-    <p></p>
-    <div class="ednote">
-      CSS profile supported.
-    </div>
+    <h2>Styling</h2>
+    <p>
+      MiniApp user agents support CSS profiles based on the standard specifications defined by the CSS Working Group Snapshot [[CSS-SNAPSHOT]]. Style sheets of MiniApp components follow the CSS recommendations for syntax, selectors, rules, media queries, fonts, and other elements described in [[CSS-SNAPSHOT]] to specify the presentation of the components.
+    </p> 
+    <p>
+      MiniApp user agents are not expected to implement full support of CSS. Instead, they MAY define specific CSS profiles with subsets of CSS properties, selectors, colors, rules, and other CSS specifications, aiming to simplify the development process and meet all their concrete requirements. 
+    </p>  
+    <p>
+      Every MiniApp component has a style sheet (with the `.css` extension) associated by default. Developers MAY include additional style sheets to reuse common styles among the components (e.g., styles for buttons or dialogs). The shared style sheets SHOULD be hosted in the <a href="https://www.w3.org/TR/miniapp-packaging/#common-directory">`/common`</a> directory in the package.
+    </p>
+    <p>
+      Developers may use the <a href="https://www.w3.org/TR/css-cascade-4/#at-ruledef-import" data-link-type="dfn">@import</a> rule to import style rules from other style sheets. If an <a href="https://www.w3.org/TR/css-cascade-4/#at-ruledef-import" data-link-type="dfn">@import</a> rule refers to a valid style sheet hosted locally in the package, user agents treat the imported style sheet as if its contents were written in place of the @import rule defined in [[CSS-CASCADE-4]].
+    </p>
+    <pre class="example" title="Import of style sheet from another style sheet"><code>/** scoreboard.css **/
+@import  "../common/buttons.css";
+
+.checkout  {
+  color: yellow; 
+}</code></pre>
+
+
+    <p data-cite="HTML">
+      Developers MAY also use the `style` element, equivalent to the [^script^] HTML element, to include CSS declarations in the primary HTML resource of the component.  
+
+    </p>
+    <pre class="example" title="Import of style sheet from the HTML document"><code>&lt;!-- scoreboard.html --&gt;
+&lt;style src="/common/base.css"&gt;&lt;/style&gt;
+
+&lt;style&gt;
+  @import '/common/base.css';
+  .impact {
+    color: red;
+  }
+&lt;/style&gt;</code></pre>
+
+    <p data-cite="HTML">
+      Developers MAY define inline styles on specific visual elements of the component using the `style` attribute, equivalent to the [^html-global/style^] HTML common attribute.  
+    </p>
+    <pre class="example" title="Inline style declaration"><code>&lt;!-- scoreboard.html --&gt;
+  &lt;div style="background-color:yellow;"&gt;
+    This is a div
+  &lt;&gt;</code></pre>
+
   </section>
 
   <section id="sec-lifecycle">
