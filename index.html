@@ -132,17 +132,23 @@
 
   <section id="sec-basics">
     <h2>Component Basics</h2>
-    <p></p>
 
     <section id="sec-pages-components">
       <h3>MiniApp Pages and Components</h3>
       <p>
-        A <dfn>MiniApp Component</dfn> is a custom MiniApp element with encapsulated functionality, data and styles that
+        A <dfn data-lt="component">MiniApp Component</dfn> is a custom MiniApp element with encapsulated functionality, data, and styles that
         can be reused in <a href="https://www.w3.org/TR/miniapp-packaging/#dfn-page" data-link-type="dfn">MiniApp Pages</a>.
       </p>
-      <div class="ednote">
-        Structure, differences with Web Pages and Web Components.
-      </div>
+      <p data-cite="HTML">
+        Each [=component=] is defined by three documents: an <a href="#sec-templating">HTML resource</a>, defining the structure and static content of the component; a <a href="#sec-stylesheets">style sheet</a> with the styles and appearance configuration for rendering; and a <a href="#sec-scripting">script resource</a> to control de business logic of the component. A component may be composed of other sub-components (stored within the package) and predefined <a href="#sec-elements">built-in elements</a>, similar to [=HTML Elements=].
+      </p>
+      <p>
+        Components and subcomponents are organized hierarchically in a tree. Although the functions and styles are encapsulated, a component may communicate with its relative nodes using <a href="#sec-events">events</a>. Developers may configure the <a href="https://www.w3.org/TR/miniapp-packaging/#dfn-page" data-link-type="dfn">Pages</a> of the app using the manifest document [[MINIAPP-MANIFEST]], pointing to the specific component associated with the page.   
+      </p>
+      <figure id="img-miniapp-pages-components">
+        <img alt="Components structure of a MiniApp (pages and components)" src="https://w3c.github.io/miniapp-packaging/images/miniapp-pages-components.svg" width="600">
+        <figcaption>Structure of a MiniApp including components and subcomponents</figcaption>
+      </figure>
     </section>
 
     <section id="sec-interface">
