@@ -1,1642 +1,216 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>MiniApp Common UI Components</title>
-    <!-- <link rel="stylesheet" href="./local.css" /> -->
-
-    <style>
-    .two-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    table.members {
-      border: 1px #f0f0f0 solid;
-      margin-bottom: 1em;
-      width: 100%;
-    }
-    table.members th:nth-child(1),
-    table.members td:nth-child(1) {
-      width: 11rem;  
-    }
-
-    table.members th:nth-child(2),
-    table.members td:nth-child(2) {
-      width: 5rem;  
-    }
-    table.members thead tr,
-    table.members tr:nth-child(even) {
-      background-color: #f0f0f0;
-    }
-    td, th {
-      padding:2px 15px;
-    }
-    </style>  
-  <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+  <meta charset="utf-8" />
+  <title>MiniApp Components</title>
+  <script async class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
   <script class="remove">
-   // All config options at https://respec.org/docs/ 
-   var respecConfig = {
+    var respecConfig = {
       specStatus: "CG-DRAFT",
-      copyrightStart: "2021",
+      copyrightStart: "2022",
       edDraftURI: "https://w3c.github.io/miniapp-components",
       editors: [
         {
-            name: "Zitao Wang",
-            companyURL: "https://www.huawei.com",
-            company: "Huawei"
-        }        
+          name: "Martin Alvarez-Espinar",
+          companyURL: "https://www.huawei.com",
+          company: "Huawei",
+          w3cid: 125049,
+        },
+        {
+          name: "Zitao Wang",
+          companyURL: "https://www.huawei.com",
+          company: "Huawei",
+          w3cid: 124483,
+        },
       ],
       group: "cg/miniapps",
       github: {
-              repoURL: "https://github.com/w3c/miniapp-components",
-              branch: "main",
-            },
-      localBiblio: {
-        APK_SIGNATURE_V2: {
-            title: "APK Signature Scheme v2",
-            href: "https://source.android.com/security/apksigning/v2"
-        },
+        repoURL: "https://github.com/w3c/miniapp-components",
+        branch: "main",
       },
+      localBiblio: {
+      },
+      a11y: true,
     };
   </script>
 </head>
-<body>
-  <section id="abstract">
-      <p>MiniApp UI component is the key to creating the MiniApp page. Each component builds an independent interactive function unit by simply encapsulating data and methods. This allows developers to reuse components in MiniApp to realize functions such as view containers, texts, and forms.</p>
-	  <p>This document specifics a set of standard common UI components for MiniApp, that allows the developers to develop programs by combing these components. The standard MiniApp common UI component can help to improve the cross-platform capability of MiniApp and allows codes to easily migrate to different native apps and operating systems, improving developer work efficiency.</p>
 
+<body data-cite="MINIAPP-PACKAGING">
+
+  <section id="abstract">
+    <p>MiniApp Components are the building blocks to creating MiniApp Pages. These components encapsulate functionality, data,
+      and styles, enabling developers to create custom and reusable items that can be combined to develop MiniApps. This
+      specification aims to specify a set of common practices to define [=MiniApp Components=] that allow developers to build
+      similar user interfaces across MiniApp platforms efficiently and provide a consistent user experience.</p>
   </section>
+
   <section id="sotd">
   </section>
-  <section>
+
+  <section id="sec-introduction">
     <h2>Introduction</h2>
-    <section>
-        <h3>An Overview of MiniApp UI Components</h3>
-<p>MiniApp is a concept of light software application, that can be distributed through any digital means, and accessed through the Web. Normally, MiniApps are made of high-level building blocks called Components, which allow developers to quickly construct the UI for a MiniApp.</p>		
-<p>MiniApp common UI components are usually stored in the common directory of the MiniApp package. Each component contains the following files:</p>
-<dt><code>.html</code></dt>
-<dd><dd>.html files describe the page layout.</dd></dd>
-<dt><code>.css</code></dt>
-<dd><dd>.css files describe the page style.</dd></dd>
-<dt><code>.js</code></dt>
-<dd><dd>.js files process the interactions between pages and users.</dd></dd>
 
-    </section>
-    <section>
-        <h3>Summarize of MiniApp UI Components</h3>
-        <p>MiniApp UI components can be classified into the following types: basic components, container components, and media components.</p>
-<dt><dfn>Basic Components</dfn></dt>
-<dd><dd>Basic components provide the minimum interactive blocks that can be reused for the MiniApp. Developers can define the user interface of the MiniApp by combining these basic components. It may include the following components such as 'Image', 'Progress', 'Text', 'Input', 'Button', 'Label', 'Select', 'Slider', 'Switch', 'Picker', 'Video', and 'Canvas'.</dd></dd>
-<dt><dfn>Container Components</dfn></dt>
-<dd><dd>Container components provide the structure of a MiniApp page. It may inculdes the following components such as 'Div', 'List', 'Swiper', 'Tabs', and 'Refresh'. </dd></dd>
-    </section>
-	<section>
-	<h3>Common Attributes</h3>
-	<p>Common attributes are used to set component identities and appearance.  Generally, all components support the following attributes:</p>
-      <table class="members">
-        <caption>Common Attributes</caption>
-        <thead>
-          <tr>
-            <th scope="col">Attribute</th>
-            <th scope="col">Type</th>
-            <th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>id</code></th>
-            <td>string</td>
-            <td>No</td>
-            <td>
-              <span>Unique ID of a component.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>style</code></th>
-            <td>string </td>
-            <td>No</td>
-            <td>
-              <span>Style declaration of a component.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>class</code></th>
-            <td>string</td>
-            <td>No</td>
-            <td>
-              <span>Style class of a component, which is used to refer to a style table.</span>
-            </td>
-          </tr>	
-		</tbody>
-	  </table>	
-      <p>The following codes shown an example to introduce how to use above common attributes:</p>
-          <pre class="example html" title="Usage of common attributes">
-&lt;!-- Associate this component with the style code in the .container block in example.css. --&gt;		  
-&lt;div class="container"&gt; 
-    &lt;text id="title" style="font-size: {{fontSize}}; color: {{fontColor}};"&gt; 
-        Hello World
-    &lt;/text&gt;
-&lt;/div&gt;
-		  </pre>
+    <p>[=MiniApp Components=] are the building blocks to creating
+      <a href="https://www.w3.org/TR/miniapp-packaging/#dfn-page"
+        data-link-type="dfn">MiniApp Pages</a>. These components encapsulate functionality, data, and styles, enabling developers to create custom
+        and reusable items that can be combined to develop MiniApps. MiniApps include essential elements like page containers,
+        textual and multimedia content, and other interactive features like forms.</p>
 
-          <pre class="example css" title="exmaple.css">
-/* Class selector. All components with the container class use this style. */
-.container { 
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0px;
-    top: 0px;
-    width: 454px;
-    height: 454px;
-}
+    <p>To align MiniApps and Web applications, MiniApps may be defined using Web resources (i.e., HTML, CSS,
+      and scripts) as described in [[MINIAPP-PACKAGING]]. Despite this, traditionally, MiniApp implementations offer specific
+      non-standard features and mechanisms facilitating the development and implementation of the MiniApp Components.</p>
 
-		  </pre>
-		  
-	</section>
+    <p>Although MiniApp Components share the same concept as Web Components, their capabilities and development features differ.
+      The main differences are motivated by the architecture of the existing implementations along the MiniApp ecosystem
+      following the MVVM pattern, based on components developed through domain-specific markup languages and without access
+      to the standard DOM.</p>
 
-    <section>
-	<h3>Common Events</h3>
-	    <p>Common events can be bound to most components.</p>	
-      <table class="members">
-        <caption>Common Events</caption>
-        <thead>
-          <tr>
-            <th scope="col">Attribute</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Type</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>Click</code></th>
-            <td></td>
-            <td></td>
-            <td>
-              <span>Triggered when a component is clicked.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Longpress</code></th>
-            <td> </td>
-            <td></td>
-            <td>
-              <span>Triggered when a component is long pressed.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>Swipe</code></th>
-            <td>Direction</td>
-            <td>string</td>
-            <td>
-              <span>Triggered when a user quickly slides on a component.
-Sliding direction. The value can be one of the following:
-1) left: Slide from right to left; 2) right: Slide from left to right; 3) up: Slide upwards; 4) down: Slide downwards
-</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Touchstart</code></th>
-            <td>TouchEvent</td>
-            <td></td>
-            <td>
-              <span>This event is triggered when a finger touches the screen.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>Touchmove</code></th>
-            <td>TouchEvent</td>
-            <td></td>
-            <td>
-              <span>This event is triggered when a finger moves on the screen.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Touchcancel</code></th>
-            <td>TouchEvent</td>
-            <td></td>
-            <td>
-              <span>This event is triggered when the touch operation on the screen is interrupted.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Touchend</code></th>
-            <td>TouchEvent</td>
-            <td></td>
-            <td>
-              <span>This event is triggered when the touch ends.</span>
-            </td>
-          </tr>			  		  
-		</tbody>
-	  </table>
-
-	 <p>The TouchEvent defined as an object to present different touch types. The attributes of the TouchEvent object are shown as following:</p>
-      <table class="members">
-        <caption>TouchEvent</caption>
-        <thead>
-          <tr>
-            <th scope="col">Attribute</th>
-            <th scope="col">Type</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>Touches</code></th>
-            <td>Array &lt;Object&gt;</td>
-            <td>
-              <span>Attribute set of the touch event, including the information array of the touch points on the screen.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>ChangedTouches</code></th>
-            <td>Array &lt;Object&gt;</td>
-            <td>
-              <span>Attribute set when a touch event occurs, including the information array of changed touch points on the screen. changedTouches has the same data format as touches and indicates touch point changes, such as from no touch point to newly generated touch points, from some touch points to no touch point, and location changes. For example, when the user's finger leaves the touchscreen, no data exists in the touches array, but changedTouches will save the generated data.</span>
-            </td>
-          </tr>			  		  		  
-		</tbody>
-	  </table>
-
-      <p>The parameters filled in Array&lt;Object&gt; of TouchEvent are shown as following:</p>
-      <table class="members">
-        <caption>Array &lt;Object&gt;</caption>
-        <thead>
-          <tr>
-            <th scope="col">Attribute</th>
-            <th scope="col">Type</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>globalX</code></th>
-            <td>Number</td>
-            <td>
-              <span>Horizontal distance from the upper left corner of the screen (excluding the status bar). The upper left corner of the screen acts as the coordinate origin.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>globalY</code></th>
-            <td>Number</td>
-            <td>
-              <span>Vertical distance from the upper left corner of the screen (excluding the status bar). The upper left corner of the screen acts as the coordinate origin.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>localX</code></th>
-            <td>Number</td>
-            <td>
-              <span>Horizontal distance from the upper left corner of the touched component. The upper left corner of the component acts as the coordinate origin.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>localY</code></th>
-            <td>Number</td>
-            <td>
-              <span>Vertical distance from the upper left corner of the touched component. The upper left corner of the component acts as the coordinate origin.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>size</code></th>
-            <td>Number</td>
-            <td>
-              <span>Touch area.</span>
-            </td>
-          </tr>			  
-		</tbody>
-	  </table>
-  
-	</section>
-
+    <p>To avoid overlap with Web Components, also supported by MiniApp user agents, this specification aims to be an informative
+      reference and is not intended to be a formal standard. Thus, it aims to specify a set of common practices to define
+      [=MiniApp Components=] that allow developers to build similar user interfaces across MiniApp platforms efficiently
+      and provide a consistent user experience.</p>
 
     <section id="conformance">
-    </section>      
+    </section>
   </section>
-  
-  <section>
-    <h2>MiniApp UI Components Container Component</h2>
-    <section>
-        <h2>div</h2>
-        <p>The 'div' component is a basic container that is used as the root node of the page structure or is used to group the content.</p>
-        <p>The 'div' component has no additional attributes except the common attributes.</p>
-		<p>The 'div' component not support additional events except the common events.</p> 
 
+  <section id="sec-basics">
+    <h2>Component Basics</h2>
+    <p></p>
+
+    <section id="sec-pages-components">
+      <h3>MiniApp Pages and Components</h3>
+      <p>
+        A <dfn>MiniApp Component</dfn> is a custom MiniApp element with encapsulated functionality, data and styles that
+        can be reused in <a href="https://www.w3.org/TR/miniapp-packaging/#dfn-page" data-link-type="dfn">MiniApp Pages</a>.
+      </p>
+      <div class="ednote">
+        Structure, differences with Web Pages and Web Components.
+      </div>
     </section>
-    <section>
-        <h2>list</h2>
-        <p>The 'list' component has no additional attributes except the common attributes.</p>
-		<p>In addition to common events, the <list> component supports the following private events as well:</p>
 
-      <table class="members">
-        <caption>Events for list component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>Scrollend</code></th>
-            <td></td>
-            <td>
-              <span>Triggered when the list stops scrolling.</span>
-            </td>
-          </tr>			  
-		</tbody>
-	  </table>
-
+    <section id="sec-interface">
+      <h3>MiniApp Interface</h3>
+      <p>
+      </p>
+      <div class="ednote">
+        Formal definition of the interface?
+      </div>
     </section>
-	<section>
-        <h2>list-item</h2>
-        <p>The 'list-item' is a child component of 'list' and is used to display items in a list.</p>
-        <p>The 'list-item' component has no additional attributes except the common attributes.</p>
-		<p>The 'list-item' component not support additional events except the common events.</p> 
+  </section>
+
+  <section id="sec-templating">
+    <h2>Templating</h2>
+    <p></p>
+    <section id="sec-data-interpolation">
+      <h3>Content Interpolation</h3>
+      <p></p>
+      <div class="ednote">
+        Data binding.
+      </div>
     </section>
-    <section>
-        <h2>swiper</h2>
-        <p>The 'swiper' component provides a swiper container that enables the switch of child components.</p>
-		<p>In addition to common attributes, the 'swiper' component supports the following attributes:</p>
+  </section>
 
-      <table class="members">
-        <caption>Attributes for swiper component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>			
-            <th scope="col">Default Value</th>
-            <th scope="col">Mandatory</th>			
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>index</code></th>
-            <td>Number</td>
-			<td>0</td>
-			<td>No</td>
-            <td>
-              <span>Index of the child component currently displayed in the container.</span>
-            </td>
-          </tr>			  
-		</tbody>
-        <tbody>
-          <tr>
-            <th scope="row"><code>loop</code></th>
-            <td>Boolean</td>
-			<td>True</td>
-			<td>No</td>
-            <td>
-              <span>Whether to enable looping.</span>
-            </td>
-          </tr>			  
-		</tbody>
-        <tbody>
-          <tr>
-            <th scope="row"><code>vertical</code></th>
-            <td>Boolean</td>
-			<td>False</td>
-			<td>No</td>
-            <td>
-              <span>Style class of a component, which is used to refer to a style table.</span>
-            </td>
-          </tr>			  
-		</tbody>		
-	  </table>
-      <p>In addition to common events, the 'swiper' component supports the following private events as well:</p>
-      <table class="members">
-        <caption>Events for swiper component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>change</code></th>
-            <td>{index:currentIndex}</td>
-            <td>
-              <span>Triggered when the index of the currently displayed component changes.</span>
-            </td>
-          </tr>			  
-		</tbody>
-	  </table>	  
-    </section>	
-	<section>
-     <h2>tabs</h2>
-     <p>The 'tabs' component is a label that is used to classify a set of attributes.</p>
-	 <p>In addition to common attributes, the 'tabs' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for tab component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>			
-            <th scope="col">Default Value</th>
-            <th scope="col">Mandatory</th>			
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>index</code></th>
-            <td>Number</td>
-			<td>0</td>
-			<td>No</td>
-            <td>
-              <span>Index of the child component currently displayed in the container.</span>
-            </td>
-          </tr>			  
-		</tbody>
-        <tbody>
-          <tr>
-            <th scope="row"><code>vertical</code></th>
-            <td>Boolean</td>
-			<td>False</td>
-			<td>No</td>
-            <td>
-              <span>Whether the tab is vertical. Available values are as follows: 1- false: The 'tab-bar' and 'tab-content' are arranged vertically. 2- true: The 'tab-bar' and 'tab-content' are arranged horizontally.
-</span>
-            </td>
-          </tr>			  
-		</tbody>
-        <tbody>
-          <tr>
-            <th scope="row"><code>disabled</code></th>
-            <td>Boolean</td>
-			<td>False</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>			  
-		</tbody>
-        <tbody>
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-			<td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>			  
-		</tbody>
-        <tbody>
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-			<td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>			  
-		</tbody>		
-	  </table>	
-      <p>The 'tabs' component not support additional events except the common events.</p>	  
-	</section>
-	<section>
-     <h2>tab-bar</h2>
-     <p>The 'tab-bar' is a child component of <tabs> and is used to provide the area to display tab labels. Its child components are horizontally arranged.</p>
-	 <p>Attributes supported by 'tab-bar' are similar to those supported by 'tabs'. In addition to the attributes supported by 'tabs', 'tab-bar' supports the following attributes as well:</p>
-      <table class="members">
-        <caption>Attributes for tab-bar component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>			
-            <th scope="col">Default Value</th>
-            <th scope="col">Mandatory</th>			
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>mode</code></th>
-            <td>String</td>
-			<td>scrollable</td>
-			<td>No</td>
-            <td>
-              <span>Extensibility of the component width. Available values are as follows: 1- scrollable: The width of a child component is the configured width. When the total width of all child components is greater than the tab-bar width, the child component can scroll horizontally. -fixed: The width of a child component equals the tab-bar width divided by the number of child components.</span>
-            </td>
-          </tr>			  
-		</tbody>		
-	  </table>	
-      <p>The 'tab-bar' component not support additional events except the common events.</p>	  
-	</section>	
-	<section>
-     <h2>tab-content</h2>
-     <p>The 'tab-content' is a child component of 'tabs' and is used to provide the area for displaying the tab content. By default, its height is such that all the remaining space of the 'tabs' component is filled. The child components are arranged horizontally. When 'tab-content' is used as a child element in a container, the length on the main axis direction must be specified. Otherwise, the child element cannot be displayed.</p>
-	 <p>Attributes supported by 'tab-content' are similar to those supported by 'tabs'. In addition to the attributes supported by 'tabs', 'tab-content' supports the following attributes as well:</p>
-      <table class="members">
-        <caption>Attributes for tab-bar component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>			
-            <th scope="col">Default Value</th>
-            <th scope="col">Mandatory</th>			
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>Scrollable</code></th>
-            <td>Boolean</td>
-			<td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the tabs can be switched by swiping left or right. The default value is true. If this attribute is set to false, tab switching is implemented only through the association with tab-bar.</span>
-            </td>
-          </tr>			  
-		</tbody>		
-	  </table>	
-      <p>The 'tab-content' component not support additional events except the common events.</p>	  
-	</section>	
-    <section>
-     <h2>refresh</h2>
-	 <p>The 'refresh' component is used to pull down to refresh the page.</p>
-	 <p>In addition to common attributes, the 'refresh' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for refresh component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>offset</code></th>
-            <td>&lt;length&gt;</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Distance to the top of the parent component from the 'refresh' component that comes to rest after a successful swipe gesture.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>type</code></th>
-            <td>String</td>
-            <td>auto</td>
-			<td>No</td>
-            <td>
-              <span>Dynamic effect when the component is refreshed. Two options are available and cannot be modified dynamically. 1-auto: default effect. When the list is pulled to the top, the list does not move. When the list is pulled to the bottom, a circle is displayed. 2- pulldown: When the list is pulled to the top, users can continue to pull down to trigger a refresh. The rebound effect will appear after the refresh. If the child component contains a list, set scrolleffect of the list to no to prevent drop-down effect conflicts.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>Refreshing</code></th>
-            <td>Boolean</td>
-            <td>False</td>
-			<td>No</td>
-            <td>
-              <span>Whether the 'refresh' component is being refreshed.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Lasttime</code></th>
-            <td>Boolean</td>
-            <td>False</td>
-			<td>No</td>
-            <td>
-              <span>Whether to display the last update time. The character string format is last update time: XXXX, where XXXX is displayed based on the time and date display specifications and cannot be dynamically modified. (It is recommended that this attribute be used when type is set to pulldown. The fixed distance is at the bottom of the content drop-down area. Pay attention to the offset attribute setting to prevent overlapping.)</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>Friction</code></th>
-            <td>Number</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Pull-down friction coefficient. The value ranges from 0 to 100. A larger value indicates a more responsive component. For example, if a user pulls the component down 100 px, it will actually move 100 * friction% px.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>discabled</code></th>
-            <td>Boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-     <p>The 'refresh' component not support additional events except the common events.</p>	  
-	</section>	
-</section>
-  <section id="sec-basic-components">
-      <h2>Basic Components</h2>
-      <section>
-      <h3>image</h3>
-	  <p>The 'image' component is used to render and display images.</p>
-	  <p>In addition to common attributes, the 'image' component supports the following attributes:</p>
+  <section id="sec-declaration">
+    <h2>Component Declaration</h2>
+    <p></p>
+    <div class="ednote">
+      Component interface (properties)
+    </div>
+  </section>
 
-      <table class="members">
-        <caption>Attributes for image component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>Src</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Image path, which supports both local and cloud paths. The supported image formats include PNG, JPG, BMP, SVG, and GIF.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Alt</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Placeholder image displayed during image loading.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>disabled</code></th>
-            <td>Boolean</td>
-            <td>False</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-      <p>In addition to common events, the <image> component supports the following private events as well:</p>
-      <table class="members">
-        <caption>Events for image component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>complete</code></th>
-            <td>{width: width, height: height}</td>
-            <td>
-              <span>Triggered when an image is successfully loaded. The loaded image is returned.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Error</code></th>
-            <td>{width: width, height: height}</td>
-            <td>
-              <span>Triggered when an exception occurs during image loading. In this case, the width and height are 0.</span>
-            </td>
-          </tr>			    
-		</tbody>
-	  </table>
-      </section>
-	  <section>
-      <h3>progress</h3>
-	  <p>The 'progress' component is used to provide a progress bar that displays the progress of content loading or operation processing.</p>
-	  <p>In addition to common attributes, the 'progress' component supports the following attributes:</p>
+  <section id="sec-reuse">
+    <h2>Component Reuse</h2>
+    <p></p>
+    <div class="ednote">
+      How to instantiate a component. Passing arguments, attributes. Access to component nodes.
+    </div>
+  </section>
 
-      <table class="members">
-        <caption>Attributes for progress component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>Type</code></th>
-            <td>String</td>
-            <td>horizontal</td>
-			<td>No</td>
-            <td>
-              <span>Type of the progress bar, which cannot be changed dynamically. Available values are as follows: horizontal: linear progress bar; circular: loading progress bar; ring: ring progress bar; scale-ring: ring progress bar with a scale; arc: arc progress bar.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>	  
-	  <p>The 'progress' component not support additional events except the common events.</p>
-	  </section>
-	  <section>
-	  <h3>text</h3>
-	  <p>The 'text' component is used to display a piece of textual information.</p>
-	  <p>In addition to common attributes, the 'text' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for text component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-      <p>The 'text' component not support additional events except the common events.</p>	  
-	  </section>
-      <section>
-	  <h3>input</h3>
-	  <p>The 'input' component provides an interactive interface to receive user input. It can be a radio button, check box, button, single-line text box, and more.</p>
-	  <p>In addition to common attributes, the 'input' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for input component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>type</code></th>
-            <td>String</td>
-            <td>Text</td>
-			<td>No</td>
-            <td>
-              <span>Type of the 'input' component. Available values include text, email, date, time, number, password, button, checkbox, and radio.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>checked</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the 'input' component is selected. This attribute is valid only when type is set to checkbox or radio.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>name</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Name of the 'input' component.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>value</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Value of the 'input' component. When type is radio, this attribute is mandatory and the value must be unique for radio buttons with the same name.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>placeholder</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Content of the hint text. This attribute is available only when the component type is set to text, email, date, time, number, or password.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>maxlength</code></th>
-            <td>number</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Maximum number of characters that can be entered in the input box. If no value is specified, the number of characters is not limited.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>headericon</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Icon resource path before text input. This icon does not support click events and is unavailable for button, checkbox, and radio types. The supported icon image formats are JPG, PNG, and SVG.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>		  
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>	  
-	  <p>In addition to common events, the 'input' component supports the following private events as well:</p>
-      <table class="members">
-        <caption>Attributes for text component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>change</code></th>
-            <td>{value:inputValue}</td>
-            <td>
-              <span>Triggered when the content entered in the text box changes. The most recent text entered by the user is returned.</span>
-            </td>
-          </tr>			  
-		</tbody>
-	  </table>	  
-	  </section>
-	  <section>
-	  <h3>button</h3>
-	  <p>The 'button' component includes capsule, circle, text, arc, and download buttons.</p>
-	  <p>In addition to common attributes, the 'button' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for button component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>type</code></th>
-            <td>string</td>
-            <td>Text</td>
-			<td>No</td>
-            <td>
-              <span>Dynamic modification is not supported. If this attribute is not set, capsule-like buttons are displayed. Different from the capsule button, the four rounded corners of a capsule-like button can be configured using border-radius. Available button types are as follows, 1) capsule: a capsule button with fillets, background color, and text;	2) circle: a circle button which can be used to place icons; 3) text: a text button which displays the text only; 4) arc: an arc button. This value is applicable to wearables only. 5) download: a download button. The download progress bar is added. This value is applicable to smart TVs and smartphones.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>value</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Text value of the button. This attribute is unavailable for circle buttons.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>icon</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Path of the button icon. This parameter is valid only for the circle button. The supported icon formats are JPG, PNG, and SVG.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>waiting</code></th>
-            <td>boolean</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Waiting status. When waiting is set to true, the waiting transition is displayed on the left of the text. </span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-      <p>The 'button' component not support additional events except the common events.</p>	  
-	  </section>
-	  <section>
-	  <h3>label</h3>
-	  <p>The 'label' component defines labels for the 'input', 'button', and 'text' components. When a label is clicked, the click effect of the component associated with the label will be triggered.</p>
-	  <p>In addition to common attributes, the 'label' component supports the following attributes:</p>
-	  <table class="members">
-        <caption>Attributes for label component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>target</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute ID of the target component.</span>
-            </td>
-          </tr>			
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>			
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-	  <p>The 'label' component do not support any event.</p>
-	  </section>
-	  <section>
-	  <h3>select</h3>
-	  <p>The 'select' component provides a drop-down list that allows users to select among multiple options.</p>
-	  <p>In addition to common attributes, the 'select' component supports the following attributes:</p>
-	  <table class="members">
-        <caption>Attributes for select component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>			
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>			
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-      <p>In addition to common events, the 'select' component supports the following private events as well:</p>
-      <table class="members">
-        <caption>Events for select component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>change</code></th>
-            <td>{newValue: newValue}</td>
-            <td>
-              <span>Triggered after a value is selected from the drop-down list.</span>
-            </td>
-          </tr>			    
-		</tbody>
-	  </table>		  
-	  </section>
-	  <section>
-	  <h3>slider</h3>
-	  <p>The 'slider' component is used to quickly adjust settings, such as volume and brightness.</p>
-	  <p>In addition to common attributes, the 'slider' component supports the following attributes:</p>
-	  <table class="members">
-        <caption>Attributes for slider component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>	
-          <tr>
-            <th scope="row"><code>Min</code></th>
-            <td>Number</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Minimum value of the slider.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Max</code></th>
-            <td>Number</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Maximum value of the slider.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>Value</code></th>
-            <td>Number</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Initial value of the slider.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>			
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-      <p>In addition to common events, the 'slider' component supports the following private events as well:</p>	
-      <table class="members">
-        <caption>Events for slider component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>change</code></th>
-            <td>{newValue: newValue}</td>
-            <td>
-              <span>Triggered when the value changes.</span>
-            </td>
-          </tr>			    
-		</tbody>
-	  </table>		  
-	  </section>
-	  <section>
-	  <h3>switch</h3>
-	  <p>The 'switch' component is used to enable or disable a function.</p>
-	  <p>In addition to common attributes, the 'switch' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for switch component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>checked</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is checked or not.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>showtext</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component displays text.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>texton</code></th>
-            <td>string</td>
-            <td>on</td>
-			<td>No</td>
-            <td>
-              <span>Text displayed when the component is checked.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>textoff</code></th>
-            <td>string</td>
-            <td>off</td>
-			<td>No</td>
-            <td>
-              <span>Text displayed when the component is not checked.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>
-	  <p>In addition to common events, the 'switch' component supports the following private events as well:</p>
-      <table class="members">
-        <caption>Events for switch component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>change</code></th>
-            <td>{checked: checkedValue}</td>
-            <td>
-              <span>Triggered when the checked state changes.</span>
-            </td>
-          </tr>				    
-		</tbody>
-	  </table>	  
-	  </section>
-	  <section>
-	  <h3>picker</h3>
-	  <p>The 'picker' component supports common, date, time, data and time, and multi-column text selectors.</p>
-	  <p>In addition to common attributes, the 'picker' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for picker component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>type</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Dynamic modification is not supported. Available values include: 1) text: text selector; 2) data: date selector; 3) time: time selector; 4) datetime: date and time selector; 5) multi-text: multi-column text selector.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>			  
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>	
-      <p>The 'picker' component not support additional events except the common events.</p>	  
-	  </section>
-	  
-	  <section>
-	  <h3>video</h3>
-	  <p>The 'video' component provides a video player.</p>
-	  <p>In addition to common attributes, the 'video' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for text component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>Muted</code></th>
-            <td>Boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether a video is muted.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Src</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Path of the video content to play.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Autoplay</code></th>
-            <td>Boolean</td>
-            <td>False</td>
-			<td>No</td>
-            <td>
-              <span>Whether a video is played automatically after being rendered.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>poster</code></th>
-            <td>string</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Preview poster of a video.</span>
-            </td>
-          </tr>	 
-          <tr>
-            <th scope="row"><code>controls</code></th>
-            <td>boolean</td>
-            <td>True</td>
-			<td>No</td>
-            <td>
-              <span>Whether the control bar is displayed during video playback. If the value is set to false, the control bar is not displayed. The default value is true, indicating that the platform can either show or hide the control bar.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>	 		  
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>	
-      <p>In addition to common events, the 'video' component supports the following private events as well:</p>	 
-      <table class="members">
-        <caption>Events for video component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Parameter</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"><code>prepared</code></th>
-            <td></td>
-            <td>
-              <span>Triggered when a video preparation is complete.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>start</code></th>
-            <td></td>
-            <td>
-              <span>Triggered when a video is played.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>pause</code></th>
-            <td></td>
-            <td>
-              <span>Triggered when a video is paused.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>Finish</code></th>
-            <td></td>
-            <td>
-              <span>Triggered when the video playback is finished.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>error</code></th>
-            <td></td>
-            <td>
-              <span>Triggered when the playback fails.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>seeking</code></th>
-            <td>{currenttime: value (second)}</td>
-            <td>
-              <span>Triggered to report the time when the progress bar is being dragged.</span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"><code>seeked</code></th>
-            <td>{currenttime: value (second)}</td>
-            <td>
-              <span>Triggered to report the playback time when the user finishes dragging the progress bar.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>timeupdate</code></th>
-            <td>{currenttime: value (second)}</td>
-            <td>
-              <span>Triggered once per 250 ms when the playback progress changes.</span>
-            </td>
-          </tr>	
-          <tr>
-            <th scope="row"><code>fullscreenchange</code></th>
-            <td>{fullscreen: fullscreenValue }</td>
-            <td>
-              <span>Triggered when a video enters or exits the full screen mode.</span>
-            </td>
-          </tr>			  
-		</tbody>
-	  </table>	 	  
-	  </section>
-	  <section>
-	  <h3>canvas</h3>
-	  <p>The 'canvas' component is used for customizing drawings.</p>
-	  <p>In addition to common attributes, the 'canvas' component supports the following attributes:</p>
-      <table class="members">
-        <caption>Attributes for canvas component</caption>
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Default Value</th>
-			<th scope="col">Mandatory</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
+  <section id="sec-properties">
+    <h2>Component Properties and Methods</h2>
+    <p></p>
+    <div class="ednote">
+    </div>
+  </section>
 
-          <tr>
-            <th scope="row"><code>disable</code></th>
-            <td>boolean</td>
-            <td>false</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component is disabled. If it is disabled, it cannot respond to user interaction.</span>
-            </td>
-          </tr>	 		  
-          <tr>
-            <th scope="row"><code>focusable</code></th>
-            <td>Boolean</td>
-            <td>Truth</td>
-			<td>No</td>
-            <td>
-              <span>Whether the component can gain focus. When focusable is set to true, the component can gain focus if there is a focusable child component. If this attribute is set to false, the component and its child components cannot gain focus.</span>
-            </td>
-          </tr>		
-          <tr>
-            <th scope="row"><code>data</code></th>
-            <td>String</td>
-            <td></td>
-			<td>No</td>
-            <td>
-              <span>Attribute set for components to facilitate data storage and reading.</span>
-            </td>
-          </tr>		  
-		</tbody>
-	  </table>	
-      <p>The 'canvas' component not support additional events except the common events.</p>	  
-	  </section>
+  <section id="sec-events">
+    <h2>Component Events</h2>
+    <section id="sec-events-binding">
+      <h3>Event Binding</h3>
+      <p></p>
+      <div class="ednote">
+      </div>
+    </section>
+    <section id="sec-events-listeners">
+      <h3>Event Listeners</h3>
+      <p></p>
+      <div class="ednote">
+        How
+      </div>
+    </section>
+    <section id="sec-events-types">
+      <h3>Types of Events</h3>
+      <p></p>
+      <div class="ednote">
+        The common events for MiniApps.
+      </div>
+    </section>
+  </section>
+
+  <section id="sec-scripting">
+    <h2>Scripting Resources</h2>
+    <p></p>
+    <div class="ednote">
+      Restrictions in the scripting resources.
+    </div>
+  </section>
+
+  <section id="sec-stylesheets">
+    <h2>Stylesheets</h2>
+    <p></p>
+    <div class="ednote">
+      CSS profile supported.
+    </div>
+  </section>
+
+  <section id="sec-lifecycle">
+    <h2>Component Lifecycle</h2>
+    <p></p>
+    <div class="ednote">
+      Explanation and links to MINIAPP-LIFECYCLE.
+    </div>
+  </section>
+
+  <section id="sec-elements">
+    <h2>MiniApp Elements</h2>
+    <p></p>
+    <div class="ednote">
+      Essential MiniApp elements. List, global attributes, events...
+    </div>
+  </section>  
+
+  <section id="sec-accessibility" class="informative">
+    <h2>Accessibility Considerations</h2>
+    <p></p>
+  </section>
+
+  <section id="sec-security" data-cite="PERMISSIONS">
+    <h2>Security Considerations</h2>
+    <p></p>
+  </section>
+
+  <section id="sec-privacy">
+    <h2>Privacy Considerations</h2>
+    <p></p>
+  </section>
+
+  <section class="appendix" id="sec-acknowledgments">
+    <h2>Acknowledgments</h2>
+    <div class="ednote">List all the contributors and W3C Team contacts</div>
   </section>
 
 </body>
+
 </html>
