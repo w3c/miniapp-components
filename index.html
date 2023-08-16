@@ -155,15 +155,46 @@
     </section>
   </section>
 
-  <section id="sec-templating">
+  <section id="sec-templating" data-cite="MINIAPP-LIFECYCLE">
     <h2>Templating</h2>
-    <p></p>
+    <p>
+      MiniApps have an advanced one-way data binding, with a <a href="https://mustache.github.io/">Mustache-based</a> templating mechanism, to reduce code redundancy and maximize maintenance efficiency.
+    </p>
+    <p>
+      Component templates are defined in the primary HTML resource associated with the component. The templating implementations are based on DOM, with XML or HTML elements and special attributes.
+    </p>
+    <p>
+      Every component instance is defined as a data object with properties and methods bound to the template. The object that contains the component's data and the business logic, managed by the [=Document/logic layer=], communicates the template instance (in the [=Document/view layer=]) of the changes produced on the data properties to proceed with the view update. 
+    </p>
+
     <section id="sec-data-interpolation">
       <h3>Content Interpolation</h3>
-      <p></p>
-      <div class="ednote">
-        Data binding.
-      </div>
+      <p>
+        Component's templates support text interpolation using the <a href="https://mustache.github.io/">Mustache</a> syntax through double curly braces (`{{}}`). The component's properties, defined in a <a href="#sec-scripting">scripting resource</a> and managed by the [=Document/logic layer=], are bound to the corresponding component's template file, described in the HTML resource that runs on the [=Document/view layer=]. 
+      </p>
+      <p>
+        The templating mechanism replaces mustache tags with the value of the properties defined under the same name in the component.  
+      </p>
+      <pre class="example" title="Template with data interpolation">&lt;!-- my-component.html --&gt;
+&lt;div&gt;{{foo}}&lt;/div&gt;
+
+...
+
+// my-component.js
+export default {
+  props: {
+    foo: 'bar'
+  }
+}
+      </pre>
+      <p>
+        In the previous example, the mustache element `{{foo}}` is replaced with the textual value of the `foo` property on the corresponding component instance. The value of this mustache variable will be updated during the execution when the `foo` property changes. The process can be summarized as follows:
+      </p>
+      <ol>
+        <li>The system identifies the component's properties and methods associated with the mustache variables in the template instance.</li>
+        <li>It monitors changes in the component's object status.</li>
+        <li>Once one monitored variable changes (in the [=Document/logic layer=]), the update is communicated to the template instance (in the [=Document/view layer=]).</li>
+      </ol>      
     </section>
   </section>
 
