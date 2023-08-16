@@ -245,25 +245,73 @@ export default {
 
   <section id="sec-events">
     <h2>Component Events</h2>
+    <p>
+      As defined in [[UIEVENTS]], an <a href="https://www.w3.org/TR/uievents/#event" data-link-type="dfn">event</a> is the representation of an occurrence (such as a mouse click on the presentation of an element, the removal of a child node from an element, or any number of other possibilities) that is associated with its <a href="https://www.w3.org/TR/uievents/#event-target" data-link-type="dfn">event target</a>. Each event is an instantiation of one specific <a href="https://www.w3.org/TR/uievents/#event-type" data-link-type="dfn">event type</a>.
+    </p>
+    <p>
+      MiniApp user agents have a dual-thread architecture, decoupling the logic and rendering engines. Therefore, the logic layer does not have access to the complete DOM tree of the document in the rendering layer, and the event targets (nodes in the rendering layer) do not always support the <a href="https://dom.spec.whatwg.org/#introduction-to-dom-events">standard DOM Events</a> model as defined in [[DOM]]. MiniApp agents usually provide a customized event system to deal with events on the virtual DOM nodes.
+    </p>
     <section id="sec-events-binding">
-      <h3>Event Binding</h3>
-      <p></p>
-      <div class="ednote">
-      </div>
-    </section>
-    <section id="sec-events-listeners">
-      <h3>Event Listeners</h3>
-      <p></p>
-      <div class="ednote">
-        How
-      </div>
+      <h3>Event Handlers</h3>
+      <p>
+        Elements in components can have event handlers specified. An event handler is composed of a value, usually an internal reference, and a listener, a callback function responsible for processing the algorithm for that event handler. In MiniApp components, the event handlers are exposed using event handler content attributes. These handlers are exposed through a name that starts with a specific keyword (`on`, `bind`, or others), followed by the event type identifier.
+      </p>
+      <pre class="example"><code>&lt;!-- my-component.html --&gt;
+  &lt;text onclick="loadMore"&gt;example&lt;/text&gt; 
+    &lt;!-- or --&gt;
+  &lt;view bindtap="loadMore"&gt;example&lt;/view&gt;
+</code></pre>
+      <p data-cite="DOM">
+        Due to the decoupled architecture, MiniApp elements do not implement the {{EventTarget}} interface, so they do not implement the {{EventTarget/addEventListener()}} function. Therefore, event binding is only performed statically using handler content attributes on the component elements. The callback function associated with the event handler is specified in the scripting resource in scope, as a member of the exported anonymous object.
+      </p> 
+      <pre class="example"><code>// my-component.js
+
+  export default {
+    loadMore(event) {
+      console.log(event);
+    }
+  }
+      </code></pre>
+      <p>
+        Likewise, developers can also define the callback functions to process the <a href="#sec-lifecycle">lifecycle events</a>.
+      </p>
+      <pre class="example"><code>// my-component.js
+
+  export default {
+    oncreated() {
+      console.log('Component created!');
+    },
+    onready() {
+      console.log('Component is ready!');
+    }
+  }
+</code></pre>
     </section>
     <section id="sec-events-types">
       <h3>Types of Events</h3>
-      <p></p>
-      <div class="ednote">
-        The common events for MiniApps.
-      </div>
+      <p>
+        MiniApp user agents implement support for a common set of event handlers supported by all their component elements, similar to HTML. However,  MiniApps have been traditionally implemented in native environments, not focused on the Web, so the names of the types might vary. Also, MiniApps user agents usually implement different event types by default.
+      </p>
+      <p>
+        The following list contains the handlers event types, supported by all MiniApp component elements:  
+      </p>
+      <dl>
+        <dt>`touchstart`</dt>
+        <dd>Like the <a href="https://www.w3.org/TR/touch-events/#dfn-touchstart" data-link-type="dfn">touchstart</a> event type defined in [[TOUCH-EVENTS]], this event is dispatched on the topmost component (event target) indicated by the pointer when the user places a <a data-link-type="dfn" href="https://w3c.github.io/touch-events/#dfn-touch-point">touch point</a> on the touch surface.</dd>
+        <dt>`touchmove`</dt>
+        <dd>Like the <a href="https://www.w3.org/TR/touch-events/#dfn-touchmove" data-link-type="dfn">touchmove</a> event type defined in [[TOUCH-EVENTS]], this event is dispatched on the topmost component (event target) indicated by the pointer when the user moves a <a data-link-type="dfn" href="https://w3c.github.io/touch-events/#dfn-touch-point">touch point</a> along the touch surface.</dd>
+        <dt>`touchcancel`</dt>
+        <dd>Like the <a href="https://www.w3.org/TR/touch-events/#dfn-touchcancel" data-link-type="dfn">touchcancel</a> event type defined in [[TOUCH-EVENTS]], this event is dispatched on the topmost component (event target) indicated by the pointer when the <a data-link-type="dfn" href="https://w3c.github.io/touch-events/#dfn-touch-point">touch point</a> has been disrupted in an implementation-specific manner.</dd>
+        <dt>`touchend`</dt>
+        <dd>Like the <a href="https://www.w3.org/TR/touch-events/#dfn-touchend" data-link-type="dfn">touchend</a> event type defined in [[TOUCH-EVENTS]], this event is  dispatched on the topmost component (event target) indicated by the pointer when the user removes a <a data-link-type="dfn" href="https://w3c.github.io/touch-events/#dfn-touch-point">touch point</a> from the touch surface, also including cases where the touch point physically leaves the touch surface.</dd>
+        <dt>`click` or `tap`</dt>
+        <dd>Like the <a href="https://www.w3.org/TR/uievents/#event-type-click" data-link-type="dfn">click</a></th> event type defined in [[UIEVENTS]], this event is dispatched on the topmost event target indicated by the pointer when the user presses down and releases the primary pointer button or otherwise activates the pointer in a manner that simulates such an action.</dd>
+        <dt>`longtap` or `longpress`</dt>
+        <dd>The `longpress` or `longtap` event type is dispatched on the topmost component (event target) indicated by the pointer when the user presses down, holds for a specific period, and releases the primary pointer button or otherwise activates the pointer in a manner that simulates such an action.</dd>      
+      </dl>
+      <p class="note">
+        The minimum value of the longpress or longtap period may vary depending on the implementation (e.g., <a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/view/ViewConfiguration.java#77">Android's default timeout is 400 ms</a>). Some platforms may allow developers to change the value by default.
+      </p>      
     </section>
   </section>
 
