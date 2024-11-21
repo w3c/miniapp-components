@@ -8,7 +8,7 @@ The main objective of the analysis is to collect insights on the common requirem
 
 For the analysis, we have grouped the similar elements of four reference MiniApp platforms - [QuickApps](https://www.quickapp.cn/), [Alipay Mini Programs](https://docs.alipay.com/mini/developer/), [Baidu Smart Mini Programs](https://smartprogram.baidu.com/developer/index.html), and [WeChat Mini Programs](https://developers.weixin.qq.com/miniprogram/dev/framework/)) - and the equivalent [HTML elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element). The analysis includes annotations on the type of the component (i.e., input, container, etc.) and the intended purpose beyond the semantics (i.e., is it used only for layout?, it for additional functionality?).      
 
-EDITOR NOTE: The study is still in progress, and it might have missed important details. It was totally based on public developer information (most of the documentation is in Chinese).
+EDITOR NOTE: The study is ==still in progress== (please file a issue to fix anything that is wrong), and it might have missed important details. It was totally based on public developer information (most of the documentation is in Chinese).
 
 
 ### Summary of common MiniApps elements and standard equivalent 
