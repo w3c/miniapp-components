@@ -2,21 +2,21 @@
 
 ## Scope of the analysis
 
-As we [proposed at TPAC 2024](https://www.w3.org/2024/09/26-miniapp-minutes.html#x388), we have analyzed and collect insights about the requirements for the essential structural MiniApp elements (i.e., the HTML-like elements used in the MiniApp components). 
+As we [proposed at TPAC 2024](https://www.w3.org/2024/09/26-miniapp-minutes.html#x388), we have analyzed and collected insights about the requirements for the essential structural MiniApp elements (i.e., the HTML-like elements used in the MiniApp components). 
 
 The main objective of the analysis is to collect insights on the common requirements for MiniApps, and to understand the feasibility of reusing the wide-spread standard HTML elements to solve the needs of these MiniApps.     
 
-For the analysis, we have grouped the similar elements of four reference MiniApp platforms - [QuickApps](https://www.quickapp.cn/), [Alipay Mini Programs](https://docs.alipay.com/mini/developer/), [Baidu Smart Mini Programs](https://smartprogram.baidu.com/developer/index.html), and [WeChat Mini Programs](https://developers.weixin.qq.com/miniprogram/dev/framework/)) - and the equivalent [HTML elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element). The analysis includes annotations on the type of component (i.e., input, container, etc.) and the intended purpose beyond the semantics (i.e., is it used only for layout?, it for additional functionality?).      
+For the analysis, we have grouped the similar elements of four reference MiniApp platforms - [QuickApps](https://www.quickapp.cn/), [Alipay Mini Programs](https://docs.alipay.com/mini/developer/), [Baidu Smart Mini Programs](https://smartprogram.baidu.com/developer/index.html), and [WeChat Mini Programs](https://developers.weixin.qq.com/miniprogram/dev/framework/)) - and the equivalent [HTML elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element). The analysis includes annotations on the type of the component (i.e., input, container, etc.) and the intended purpose beyond the semantics (i.e., is it used only for layout?, it for additional functionality?).      
 
-EDITOR NOTE: The study is still in progress, and it might have missed important details. It was totally based on public developer information (most of the documentation in Chinese).
+EDITOR NOTE: The study is still in progress, and it might have missed important details. It was totally based on public developer information (most of the documentation is in Chinese).
 
 
 ### Summary of common MiniApps elements and standard equivalent 
 
 Notes: 
 - The second column (2+ implementations) indicates if the feature was found in two or more implementations.
-- Columns 4 and 5 indicate if the element is defined beyond structure and semantics. Column four if only for styling (e.g., facilitate layout) and column five just to add additional functionality. 
-- The last column (Standard solution) shows a potential way to implement the feature re-using existing standards. 
+- Columns 4 and 5 indicate if the element is defined beyond structure and semantics. Column four showing if it is only for styling (e.g.,to facilitate layout) and column five just to add additional functionality. 
+- The last column (Standard solution) shows a potential way to implement the feature by reusing existing standards. 
 
 | Type | 2+ impl? | Feature | Style? | Funct.? | W3C Rec. | Standard solution |
 | ---- | -------- | ------- | ------ | ------- | -------- | ----------------- |
