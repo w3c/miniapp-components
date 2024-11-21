@@ -47,7 +47,7 @@ Notes:
 |  | yes | Advertisement | | | | (need additional services) |
 |  | | 3D-model | | | `<model>` (WIP) | direct usage |
 |  | | Comment list | | | `<ul>``<q>` | (need additional services) |
-|  | Forms | yes | Textual input | | | `<input>` | direct usage (limiting types) |
+| Forms | yes | Textual input | | | `<input>` | direct usage (limiting types) |
 |  | yes | Image capture input | | | `<input type="file" accept="image/\*" capture...` | direct usage |
 |  | yes | Multiple-line input | | | `<textarea>` | direct usage |
 |  | yes | Checkbox | | | `<input type="checkbox">` | direct usage |
@@ -200,7 +200,7 @@ One of the benefit of using standard HTML components is the (current) supported 
 |  | yes | Advertisement | | | | (need additional services) | `<ad>` | `<ad>` | `<ad>` | `<ad>`, `<ad-custom>` | Could it be a good opportunity to propose new works on this? |
 |  | | 3D-model | | | `<model>` (WIP) | direct usage | | | `<modelviewer>` | | |
 |  | | Comment list | | | `<ul>` with `<q>` | (need additional services) | | | `<comment-list>`, `<comment-detail>` | | |
-|  | Forms | yes | Textual input | | | `<input>` | direct usage (limiting types) | `<input>` | `<input>` | `<input>` | `<input>` | Input mechanism and type of data |
+| Forms | yes | Textual input | | | `<input>` | direct usage (limiting types) | `<input>` | `<input>` | `<input>` | `<input>` | Input mechanism and type of data |
 |  | yes | Image capture input | | | `<input type="file" accept="image/\*" capture...` | direct usage | `<camera>` | `<camera>` | `<camera>` | `<camera>`, `<live-pusher>` | Control of the outcome with functions, better integration with the camera (flash) |
 |  | yes | Multiple-line input | | | `<textarea>` | direct usage | `<textarea>` | `<textarea>` | `<textarea>` | `<textarea>` | |
 |  | yes | Checkbox | | | `<input type="checkbox">` | direct usage | `<input type="checkbox">` | `<checkbox>`, `<checkbox-group>` | `<checkbox>`, `<checkbox-group>` | `<checkbox>`, `<checkbox-group>` | |
