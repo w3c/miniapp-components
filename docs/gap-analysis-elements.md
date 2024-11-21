@@ -1,6 +1,14 @@
 # MiniApp Element Gap Analysis 
 
-## Scope of the analysis
+Table of contents:
+
+* 1. [Scope of the analysis](#Scopeoftheanalysis)
+	* 1.1. [Summary of common MiniApps elements and standard equivalent](#SummaryofcommonMiniAppselementsandstandardequivalent)
+	* 1.2. [](#)
+	* 1.3. [Observations on Accessibility](#ObservationsonAccessibility)
+	* 1.4. [Complete MiniApp/HTML Elements Table](#CompleteMiniAppHTMLElementsTable)
+
+##  1. <a name='Scopeoftheanalysis'></a>Scope of the analysis
 
 As we [proposed at TPAC 2024](https://www.w3.org/2024/09/26-miniapp-minutes.html#x388), we have analyzed and collected insights about the requirements for the essential structural MiniApp elements (i.e., the HTML-like elements used in the MiniApp components). 
 
@@ -11,7 +19,7 @@ For the analysis, we have grouped the similar elements of four reference MiniApp
 EDITOR NOTE: The study is ==still in progress== (please file a issue to fix anything that is wrong), and it might have missed important details. It was totally based on public developer information (most of the documentation is in Chinese).
 
 
-### Summary of common MiniApps elements and standard equivalent 
+###  1.1. <a name='SummaryofcommonMiniAppselementsandstandardequivalent'></a>Summary of common MiniApps elements and standard equivalent 
 
 Notes: 
 - The second column (2+ implementations) indicates if the feature was found in two or more implementations.
@@ -80,7 +88,7 @@ Notes:
 
 <a name='block-element'>*</a> `div` or any other semantic block element.
 
-### <a name='safe-html'>Safe MiniApp HTML Elements</a>
+###  1.2. <a name=''></a>
 
 MiniApps usually support raw HTML within a specific container (see [HTML-rich content](#html-rich-content)). 
 The following table includes the HTML elements commonly accepted by the MiniApp platforms analyzed.
@@ -155,7 +163,7 @@ The following table includes the HTML elements commonly accepted by the MiniApp 
 
 
 
-### Observations on Accessibility
+###  1.3. <a name='ObservationsonAccessibility'></a>Observations on Accessibility
   
 We have examined the developer documentation, looking at the accessibility features for the four MiniApp platforms. 
 Based on the high-level documentation, we observe a __lack of accessibility support in general__. Only some platforms may include effective accessibility mechanisms.
@@ -169,7 +177,7 @@ Based on the high-level documentation, we observe a __lack of accessibility supp
 One of the benefit of using standard HTML components is the (current) supported accessibility mechanisms, extensively tested and validated by assistive technologies. 
 
 
-### Complete MiniApp/HTML Elements Table 
+###  1.4. <a name='CompleteMiniAppHTMLElementsTable'></a>Complete MiniApp/HTML Elements Table 
 
 | Type | 2+ impl? | Feature | Just style? | Just funct.? | W3C Rec. | Standard solution | QuickApp | Alipay | Baidu | WeChat | Annotations |
 | ---- | -------- | ------- | ----------- | ------------ | -------- | ----------------- | -------- | ------ | ----- | ------ | ----------- |
