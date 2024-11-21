@@ -23,17 +23,17 @@ Notes:
 | Container | yes | Content Division Element | | | `<div>` | direct usage |
 |  | yes | Content Span (Inline container) | | | `<span>` | direct usage |
 |  |  | Dialog | | | `<dialog>` | direct usage |
-|  | yes | Stacking container | yes | | `<div>`[^*^](#block-element) | HTML + CSS (`div { position: relative; }`) |
-|  | yes | Slideshow (carousel) | yes | | `<div>`[^*^](#block-element) | HTML + CSS Flexbox + `overscroll-behavior` + `scroll-behavior`... |
-|  | yes | Tabs | yes | | `<nav> <section>`[^*^](#block-element) | (OpenUI) (`nav`s + `section` + CSS) |
+|  | yes | Stacking container | yes | | `<div>`[*](#block-element) | HTML + CSS (`div { position: relative; }`) |
+|  | yes | Slideshow (carousel) | yes | | `<div>`[*](#block-element) | HTML + CSS Flexbox + `overscroll-behavior` + `scroll-behavior`... |
+|  | yes | Tabs | yes | | `<nav> <section>`[*](#block-element) | (OpenUI) (`nav`s + `section` + CSS) |
 |  | yes | List container | yes | | `<ul><li>` | HTML + CSS |
-|  | yes | Fixed container | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
-|  | yes | Scrolling container | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
-|  | | Grid layout | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
-|  | | Nested scroll layout | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
-|  | | Marquee | yes | | `<marquee>` (deprecated)[^*^](#block-element) | HTML + CSS |
-|  | yes | Drag and drop container | | yes | `<div>`[^*^](#block-element) | HTML + _Drag and Drop API_ |
-|  | | Pull to refresh | | yes | `<div>`[^*^](#block-element) | HTML + JS + CSS |
+|  | yes | Fixed container | yes | | `<div>`[*](#block-element) | HTML + CSS |
+|  | yes | Scrolling container | yes | | `<div>`[*](#block-element) | HTML + CSS |
+|  | | Grid layout | yes | | `<div>`[*](#block-element) | HTML + CSS |
+|  | | Nested scroll layout | yes | | `<div>`[*](#block-element) | HTML + CSS |
+|  | | Marquee | yes | | `<marquee>` (deprecated)[*](#block-element) | HTML + CSS |
+|  | yes | Drag and drop container | | yes | `<div>`[*](#block-element) | HTML + _Drag and Drop API_ |
+|  | | Pull to refresh | | yes | `<div>`[*](#block-element) | HTML + JS + CSS |
 |  | yes | Conditional block (media query) | | | `@style` | CSS media queries |
 |  | | Navigation Bar | | | `<nav>` | HTML + CSS |
 | Content | yes | Image | | | `<img>`, `<picture>` | direct usage |
