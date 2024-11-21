@@ -23,30 +23,30 @@ Notes:
 | Container | yes | Content Division Element | | | `<div>` | direct usage |
 |  | yes | Content Span (Inline container) | | | `<span>` | direct usage |
 |  |  | Dialog | | | `<dialog>` | direct usage |
-|  | yes | Stacking container | yes | | | block element + CSS (`div { position: relative; }`) |
-|  | yes | Slideshow (carousel) | yes | | | block element + CSS Flexbox + `overscroll-behavior` + `scroll-behavior`... |
-|  | yes | Tabs | yes | | | (OpenUI) (`nav`s + `section` + CSS) |
-|  | yes | List container | yes | | | `<ul>` `<li>` + CSS |
-|  | yes | Fixed container | yes | | `<div>` or any other block element | block elements + CSS |
-|  | yes | Scrolling container | yes | | `<div>` or any other block element | block elements + CSS |
-|  | | Grid layout | yes | | `<div>` or any other block element | block elements + CSS |
-|  | | Nested scroll layout | yes | | `<div>` or any other block element | block elements + CSS |
-|  | | Marquee | yes | | `<marquee>` (deprecated) | block elements + CSS |
-|  | yes | Drag and drop container | | yes | | `div` + Drag and Drop API |
-|  | | Pull to refresh | | yes | | `div` + JS + CSS |
-|  | yes | Conditional block (media query) | | | | CSS media queries |
-|  | | Navigation Bar | | | `<nav>` | direct usage + CSS |
+|  | yes | Stacking container | yes | | `<div>`[^*^](#block-element) | HTML + CSS (`div { position: relative; }`) |
+|  | yes | Slideshow (carousel) | yes | | `<div>`[^*^](#block-element) | HTML + CSS Flexbox + `overscroll-behavior` + `scroll-behavior`... |
+|  | yes | Tabs | yes | | `<nav> <section>`[^*^](#block-element) | (OpenUI) (`nav`s + `section` + CSS) |
+|  | yes | List container | yes | | `<ul><li>` | HTML + CSS |
+|  | yes | Fixed container | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
+|  | yes | Scrolling container | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
+|  | | Grid layout | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
+|  | | Nested scroll layout | yes | | `<div>`[^*^](#block-element) | HTML + CSS |
+|  | | Marquee | yes | | `<marquee>` (deprecated)[^*^](#block-element) | HTML + CSS |
+|  | yes | Drag and drop container | | yes | `<div>`[^*^](#block-element) | HTML + _Drag and Drop API_ |
+|  | | Pull to refresh | | yes | `<div>`[^*^](#block-element) | HTML + JS + CSS |
+|  | yes | Conditional block (media query) | | | `@style` | CSS media queries |
+|  | | Navigation Bar | | | `<nav>` | HTML + CSS |
 | Content | yes | Image | | | `<img>`, `<picture>` | direct usage |
 |  | yes | Icon | yes | | `<img>`, `<span>` | (OpenUI) HTML + CSS |
 |  | yes | Progress indicator | | | `<progress>` | HTML + CSS |
 |  | yes | Anchor | | | `<a>` | direct usage |
 |  | yes | Text  (no semantics) | | | `<span>` | direct usage |
 |  | yes | Web-view (external URL) | | | `<iframe>` | direct usage |
-|  | yes | HTML-rich content | | | standard elements | subset of HTML elements | 
+|  | yes | HTML-rich content | | | [standard elements](#safe-html) | subset of HTML elements | 
 |  | yes | Map | | | | (need additional services) |
 |  | yes | Advertisement | | | | (need additional services) |
 |  | | 3D-model | | | `<model>` (WIP) | direct usage |
-|  | | Comment list | | | `<ul>` with `<q>` | (need additional services) |
+|  | | Comment list | | | `<ul>``<q>` | (need additional services) |
 |  | Forms | yes | Textual input | | | `<input>` | direct usage (limiting types) |
 |  | yes | Image capture input | | | `<input type="file" accept="image/\*" capture...` | direct usage |
 |  | yes | Multiple-line input | | | `<textarea>` | direct usage |
@@ -58,13 +58,13 @@ Notes:
 |  | yes | Select list | | | `<select>`, `<optgroup>`, `<option>` | direct usage + CSS |
 |  | yes | Slider | | | `<input type="range">` | direct usage |
 |  | yes | Picker (scroll selector) | | | `<select>`, `<option>` | direct usage + CSS |
-|  | yes | Switch button | yes | | `<input type="checkbox">` (OpenUI) | HTML + CSS |
-|  | | Sharing button | | yes | `<button>` | Web Share API (Web Component?) |
+|  | yes | Switch button | yes | | `<input type="checkbox">` | HTML + CSS |
+|  | | Sharing button | | yes | `<button>` | _Web Share API_ |
 |  | | Like button | yes | yes | `<button>` | (need additional services) |
 |  | | Specific action button | yes | yes | `<button>` | (need additional services) |
 |  | | Rating panel | yes | yes | `<radio>` | HTML + CSS |
 |  | | Rich text editor | | yes | | (need additional services) |
-|  | | Selection of text | | yes | | Selection API |
+|  | | Selection of text | | yes | | _Selection API_ |
 |  | | Keyboard overlay (input) | | yes | | Implementation-specific |
 |  | | Payment panel | | yes | | (need additional services) |
 | Media | yes | Audio content | | | `<audio>` | direct usage |
@@ -78,8 +78,9 @@ Notes:
 |  | | Transition of element between pages | yes | | | |
 | Metadata | yes | Page metadata | | | `<meta>` | direct usage |
 
+<a name='block-element'>*</a> `div` or any other semantic block element.
 
-### Safe MiniApp HTML Elements
+### <a name='safe-html'>Safe MiniApp HTML Elements</a>
 
 MiniApps usually support raw HTML within a specific container (see [HTML-rich content](#html-rich-content)). 
 The following table includes the HTML elements commonly accepted by the MiniApp platforms analyzed.
@@ -156,10 +157,10 @@ The following table includes the HTML elements commonly accepted by the MiniApp 
 
 ### Observations on Accessibility
   
-We have examined the developers documentation looking at the accessibility features for the four MiniApp platforms. 
+We have examined the developer documentation, looking at the accessibility features for the four MiniApp platforms. 
 Based on the high-level documentation, we observe a __lack of accessibility support in general__. Only some platforms may include effective accessibility mechanisms.
 
-- __Alipay Mini Programs__ support ARIA roles and labels to enhance the semantics of the elements `view`, `text`, `icon`, `button`, `label`, `checkbox`, `switch`, `image`, and `radio`. In concrete, this platform supports: `aria-label`, `aria-labelledby`, `role`, `aria-expanded` and `aria-checked`. 	
+- __Alipay Mini Programs__ support ARIA roles and labels to enhance the semantics of the elements `view`, `text`, `icon`, `button`, `label`, `checkbox`, `switch`, `image`, and `radio`. In concrete, this platform supports `aria-label`, `aria-labelledby`, `role`, `aria-expanded` and `aria-checked`. 	
 - No references to WAI, WCAG, ARIA or accessibility in [__Baidu__'s documentation](https://smartprogram.baidu.com/).
 - __QuickApps__ supports `aria-label`.						
 - __WeChat__: Extensive ARIA support, [only in Windows and MacOS](https://developers.weixin.qq.com/miniprogram/dev/component/aria-component.html).
