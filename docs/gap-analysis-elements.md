@@ -69,7 +69,7 @@ Notes:
 |  | | Payment panel | | yes | | (need additional services) |
 | Media | yes | Audio content | | | `<audio>` | direct usage |
 |  | yes | Video content | | | `<video>` | direct usage |
-|  | | AR Camera | | | | (need additional services) |
+|  | | AR Camera | | | | _WebXR Device API_ |
 |  | yes | Canvas | | | `<canvas>` | direct usage |
 |  | | Video/audio conference | | | | (need additional services) |
 | Animations | yes | Lottie animation | yes | | | _Web Animations API_ |
@@ -222,7 +222,7 @@ One of the benefit of using standard HTML components is the (current) supported 
 |  | | Payment panel | | yes | | (need additional services) | | | `<inline-payment-panel>` | | May be implemented as a Web Component |
 | Media | yes | Audio content | | | `<audio>` | direct usage | `<video>` | `<video>` | `<audio>` | `<audio>` | |
 |  | yes | Video content | | | `<video>` | direct usage | `<video>` | `<video>` | `<video>` | `<video>`, `<channel-live>`, `<channel-video>`, `<live-player>`, | |
-|  | | AR Camera | | | | (need additional services) | | | `<ar-camera>` | | |
+|  | | AR Camera | | | | _WebXR Device API_ | | | `<ar-camera>` | | |
 |  | yes | Canvas | | | `<canvas>` | direct usage | `<canvas>` | `<canvas>` | `<canvas>` | `<canvas>` | |
 |  | | Video/audio conference | | | | (need additional services) | | | `<rtc-room>`, `<rtc-room-item>` | `<voip-room>` | |
 | Animations | yes | Lottie animation | yes | | | (need additional services) | `<lottie>` | `<lottie>` | `<animation-view>` | | Could it be a good opportunity to propose new works on this? |
