@@ -65,7 +65,7 @@ Notes:
 |  | | Rating panel | yes | yes | `<radio>` | HTML + CSS |
 |  | | Rich text editor | | yes | | (need additional services) |
 |  | | Selection of text | | yes | | _Selection API_ |
-|  | | Keyboard overlay (input) | | yes | | Implementation-specific |
+|  | | Keyboard overlay (input) | | yes | | _VirtualKeyboard API_ |
 |  | | Payment panel | | yes | | (need additional services) |
 | Media | yes | Audio content | | | `<audio>` | direct usage |
 |  | yes | Video content | | | `<video>` | direct usage |
@@ -218,7 +218,7 @@ One of the benefit of using standard HTML components is the (current) supported 
 |  | | Rating panel | yes | yes | `<radio>` | HTML + CSS | `<rating>` | | | | May be implemented as a Web Component |
 |  | | Rich text editor | | yes | | (need additional services) | | | | `<editor>` | May be implemented as a Web Component |
 |  | | Selection of text | | yes | | Selection API | | | | `<selection>` | May be implemented as a Web Component |
-|  | | Keyboard overlay (input) | | yes | | Implementation-specific | | | | `<keyboard-accessory>` | May be implemented as a Web Component |
+|  | | Keyboard overlay (input) | | yes | | Implementation-specific | | | | `<keyboard-accessory>` |  _VirtualKeyboard API_ |
 |  | | Payment panel | | yes | | (need additional services) | | | `<inline-payment-panel>` | | May be implemented as a Web Component |
 | Media | yes | Audio content | | | `<audio>` | direct usage | `<video>` | `<video>` | `<audio>` | `<audio>` | |
 |  | yes | Video content | | | `<video>` | direct usage | `<video>` | `<video>` | `<video>` | `<video>`, `<channel-live>`, `<channel-video>`, `<live-player>`, | |
@@ -226,9 +226,9 @@ One of the benefit of using standard HTML components is the (current) supported 
 |  | yes | Canvas | | | `<canvas>` | direct usage | `<canvas>` | `<canvas>` | `<canvas>` | `<canvas>` | |
 |  | | Video/audio conference | | | | (need additional services) | | | `<rtc-room>`, `<rtc-room-item>` | `<voip-room>` | |
 | Animations | yes | Lottie animation | yes | | | (need additional services) | `<lottie>` | `<lottie>` | `<animation-view>` | | Could it be a good opportunity to propose new works on this? |
-|  | | Video animation | yes | | `<video>` | direct usage | | | `<animation-video>` | | To explore the need of these requirements |
-|  | | Transition of pages | yes | | | | | | | `<open-container>` | To explore the need of these requirements |
-|  | | Transition of element between pages | yes | | | | | | | `<share-element>` | To explore the need of these requirements, like Flutter Hero |
+|  | | Video animation | yes | | `<video>` | direct usage | | | `<animation-video>` | | _Web Animations API_ |
+|  | | Transition of pages | yes | | | | | | | `<open-container>` | _View Transitions API_ |
+|  | | Transition of element between pages | yes | | | | | | | `<share-element>` | _View Transitions API_ |
 | Metadata | yes | Page metadata | | | `<meta>` | direct usage | | | `<page-meta>` | `<page-meta>` | |
 
 
