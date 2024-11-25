@@ -71,11 +71,11 @@ Notes:
 | | Gyroscope | Sensors | yes | yes | yes | yes | yes | ___Sensor APIs (Gyroscope)___ | | 
 | | Proximity sensor | Sensors | yes |  |  |  |  | ___Proximity Sensor___ | yes |
 | | Step counter | Sensors | yes |  | yes | yes | yes |  | | 
-| | Ambient light sensor | Sensors | ? | ? | ? | yes |  | ___Sensor APIs (Ambient Light Sensor)___ | | 
+| | Ambient light sensor | Sensors |  |  |  |  |  | ___Sensor APIs (Ambient Light Sensor)___ | | 
 | | Shake detection | Sensors |  |  | yes |  |  |  | | 
 | | Location | Geolocation API | yes | yes | yes | yes | yes | ___Geolocation API___, ___Geolocation Sensor___ | | 
 | | Is screen locked? | Check if the screen is locked | yes |  |  |  |  | ___Idle Detection API___ | yes |
-| | Screen orientation | Information about the screen orientation | ? | ? | ? | ? |  | ___Screen Orientation API___ | | 
+| | Screen orientation | Information about the screen orientation | yes | yes | yes | yes |  | ___Screen Orientation API___ | | 
 | | Battery level | Status of the battery level | yes | yes | yes | yes | yes | ___Battery Status API___ | yes                  |
 | | Memory warning (or available) | Warning for low memory in the device |  | yes | yes | yes | yes | ___Device Memory API___ | yes |
 | System Settings | System volume | Media volume (get/set) | yes |  |  |  |  | ___HTMLMediaElement.volume___ | | 
