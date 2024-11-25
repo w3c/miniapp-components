@@ -13,6 +13,125 @@ EDITOR NOTE: The study is __still in progress__ (please file a issue to fix anyt
 
 ### Summary of common MiniApps APIs and standard equivalent 
 
+
+Notes: 
+- The column number three (`2+`) indicates if the feature was found in two or more MiniApp implementations.
+- The last column indicates the existing equivalent W3C solution. 
+- See the [full report](#fulltable) for more details.
+
+
+| Type  | API |  2+ |  Standard |
+| ----  | --- |  -- |  -------- | 
+| Basic functions  | Application context info |  yes |  ___Permissions API___ | 
+|  | Log printing/management |  yes |  ___Console API___ | 
+|  | Page routing |  yes |  ___History API___, ___Navigation API___ | 
+|  | Web page opening |  yes |  ___DOM - Window.open()___ | 
+|  | Background running |   |  ___Service Worker API___, ___Background Synchronization API___ | 
+|  | Text decoding tools |   |  ___Encoding API___ | 
+|  | App configurations |  yes |  ___Web Application Manifest___ | 
+|  | Profiling, debugger |  yes |  ___Compute Pressure API___, ___Performance APIs___ |
+|  | Can I Use |  yes |  ___Media Capabilities API___ | 
+|  | Async. timeouts, intervals |  yes |  ___Window.setTimeout()___, ___Window.setInterval()___ | 
+|  | Environment variables |  yes |   | 
+|  | Media Query |  yes |  ___CSSOM View Module API___ | 
+|  | Element selector |  yes |  ___DOM Standard___ | 
+|  | Workers |  yes |  ___Web Workers API___, ___Prioritized Task Scheduling API___ | 
+|  | Base64 - ArrayBuffer operations |  yes |  ___Window.atob()___, ___Window.btoa()___, ___Uint8Array___ | 
+|  | Navigation bar |  yes |   | 
+|  | Wasm support |   |  ___WebAssembly JavaScript API___ | 
+|  | MiniApp routing |  yes |  ___Launch Handler API___ |
+|  | WebView messages |   |  ___DOM - Window.postMessage()___ | 
+| UI interaction  | External sharing |  yes |  ___Web Share API___ | 
+|  | Pull down to refresh |  yes |  ___CSS Overscroll Behavior Module Level 1___ | 
+|  | Web Font loader |  yes |  ___CSS Font Loading API___ | 
+|  | Scrolling in the app |  yes |  ___Visual Viewport API___ | 
+|  | Animations |  yes |  ___Web Animations API___ | 
+|  | Dialog management |  yes |  ___Popover API___ | 
+|  | Notifications |   |  ___Push API___ | 
+|  | On Screenshot |  yes |   | 
+|  | Vibration |  yes |  ___Vibration API___ | 
+|  | QR code scan |  yes |  ___Barcode Detection API___ |
+|  | Calendar event |  yes |   | 
+|  | Contacts |  yes |  ___Contact Picker API___ |
+|  | Alarms |   |   | 
+|  | Driving safety restrictions |   |   | 
+|  | Rich editor |  yes |  ___EditContext API___ |
+|  | City, region picker |   |   | 
+| Network access  | Fetch |  yes |  ___Fetch API___ | 
+|  | Prefetch content |  yes |  ___Background Fetch API___, ___Speculation Rules API___ |
+|  | Upload and download |  yes |  ___Fetch API___ | 
+|  | WebSocket |  yes |  ___The WebSocket API___ | 
+|  | mDNS service |   |   | 
+| Data management  | Data storage |  yes |  ___Storage API___ (___IndexedDB API___), ___Web Storage API___ | 
+|  | File system management |  yes |  ___File System API___, ___File and Directory Entries API___ | 
+|  | Data exchange with other MiniApps |  yes |  ___Broadcast Channel API___, ___Channel Messaging API___ | 
+|  | Compression/Decompression |  yes |   | 
+|  | Clipboard |  yes |  ___Clipboard API___ | 
+|  | Cryptography |  yes |  ___Web Crypto API___ | 
+|  | Cache |   |  ___Content Index API___ |
+| Sensors  | Accelerometer |  yes |  ___Sensor APIs (Accelerometer)___ | 
+|  | Compass |  yes |  ___Sensor APIs (Magnetometer)___ | 
+|  | Gyroscope |  yes |  ___Sensor APIs (Gyroscope)___ | 
+|  | Proximity sensor |   |  ___Proximity Sensor___ |
+|  | Step counter |  yes |   | 
+|  | Ambient light sensor |   |  ___Sensor APIs (Ambient Light Sensor)___ | 
+|  | Shake detection |   |   | 
+|  | Location |  yes |  ___Geolocation API___, ___Geolocation Sensor___ | 
+|  | Is screen locked? |   |  ___Idle Detection API___ |
+|  | Screen orientation |   |  ___Screen Orientation API___ | 
+|  | Battery level |  yes |  ___Battery Status API___ |
+|  | Memory warning (or available) |  yes |  ___Device Memory API___ |
+| System Settings  | System volume |   |  ___HTMLMediaElement.volume___ | 
+|  | Wake lock |  yes |  ___Screen Wake Lock API___ | 
+|  | Device information |  yes |  ___User-Agent Client Hints API___ |
+|  | Screen brightness |  yes |   | 
+|  | Open system settings, authorization |  yes |  ___Notifications API___ | 
+|  | Accessibility enabled? |  yes |   | 
+| Communication  | NFC |  yes |  ___Web NFC API___ |
+|  | NFC HCE |   |   | 
+|  | Bluetooth |  yes |  ___Web Bluetooth API___ |
+|  | Wi-Fi |  yes |   | 
+|  | Network status, telecom info |  yes |  ___Network Information API___ |
+|  | Phone calls |  yes |   | 
+|  | SMS message sending |  yes |   | 
+| Multimedia  | Camera (photo/video) |  yes |  ___Media Capture, Streams API___ | 
+|  | AR Camera |  yes |  ___WebXR Device API___ |
+|  | Audio recording |  yes |  ___MediaStream Recording API___ | 
+|  | Image processing |  yes |  ___WebCodecs API___, ___MediaStream Image Capture API___ | 
+|  | Video processing |  yes |  WebCodecs API, ___Insertable Streams for MediaStreamTrack API___ | 
+|  | Screen recording |   |  ___Screen Capture API___,  ___MediaRecorder API___ | 
+|  | Canvas |  yes |  ___Canvas API___ | 
+|  | Audio playback |  yes |  ___Web Audio API___, ___Media Capture___, ___Streams API___ | 
+|  | Video playback |  yes |  ___Media Capture and Streams API___ | 
+|  | System audio player |  yes |  ___Audio Output Devices API___ |
+|  | Text to speech |  yes |  ___Web Speech API___ | 
+|  | Speech recognition |  yes |  ___Web Speech API___ | 
+|  | OCR |  yes |   | 
+|  | AI object classification |  yes |   | 
+|  | Face detection |  yes |   | 
+| Platform-specific  | Login |  yes |  ___FedCM API, Web Authentication API, WebOTP API___ | 
+|  | Payments |  yes |  ___Payment Request, Payment Handlers, SPC___ APIs | 
+|  | Tokens, cards |  yes |  ___Digital Credentials API___ |
+|  | Push notifications |   |  ___Push API___ | 
+|  | Ads |  yes |   | 
+|  | User credentials management |   |  ___Credential Management API___ | 
+|  | Text translation |  yes |   | 
+|  | RTC conferences |  yes |   | 
+|  | Live video |  yes |   | 
+|  | Map management |  yes |   | 
+|  | Route management |   |   | 
+|  | Biometric authentication |   |  ___Web Authentication API___ | 
+|  | AI inferences |   |  ___Web Neural Network API___ | 
+|  | Server time |   |   | 
+| App Management  | App marketplace management |  yes |   | 
+|  | Home screen icon |   |  ___Service Worker API___ | 
+|  | Statistics - Analytics |  yes |   | 
+|  | Sub-package management |  yes |  ___ECMAScript import___ | 
+|  | Update manager |  yes |  ___Server-sent events___ | 
+
+
+### <a name="fulltable"></a>Common MiniApps APIs and standard equivalent full analysis 
+
 Notes: 
 - The eight column (`2+`) indicates if the feature was found in two or more MiniApp implementations.
 - Columns 9 and 10 (last one) indicate the existing equivalent W3C solution and if the solution is widely supported or it is under experimentation (exp) or has limited (lim) support. 
