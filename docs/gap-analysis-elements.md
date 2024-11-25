@@ -72,10 +72,10 @@ Notes:
 |  | | AR Camera | | | | (need additional services) |
 |  | yes | Canvas | | | `<canvas>` | direct usage |
 |  | | Video/audio conference | | | | (need additional services) |
-| Animations | yes | Lottie animation | yes | | | (need additional services) |
+| Animations | yes | Lottie animation | yes | | | _Web Animations API_ |
 |  | | Video animation | yes | | `<video>` | direct usage |
-|  | | Transition of pages | yes | | | |
-|  | | Transition of element between pages | yes | | | |
+|  | | Transition of pages | yes | | | _View Transitions API_ |
+|  | | Transition of element between pages | yes | | | _View Transitions API_ |
 | Metadata | yes | Page metadata | | | `<meta>` | direct usage |
 
 <a name='block-element'>*</a> `div` or any other semantic block element.
