@@ -210,8 +210,7 @@ Notes:
 | | Network status, telecom info | Info about the network, may even have the carrier and type of connection | yes | yes | yes | yes | yes | ___Network Information API___ | [netinfo/](https://wpt.fyi/results/netinfo) |
 | | Phone calls | Enable phone calls |  | yes | yes | yes | yes |  |  | 
 | | SMS message sending | Sending SMS | yes |  | yes | yes | yes |  |  | 
-| Multimedia | Camera (photo/video) | Image management (pick image/video, take photo/videos, previews) | yes | yes | yes | yes | yes | ___Media Capture, Streams API___ | [mediacapture-image/](https://wpt.fyi/results/mediacapture-image), [mediacapture-streams/](https://wpt.fyi/results/mediacapture-streams)
-, [streams/](https://wpt.fyi/results/streams) | 
+| Multimedia | Camera (photo/video) | Image management (pick image/video, take photo/videos, previews) | yes | yes | yes | yes | yes | ___Media Capture, Streams API___ | [mediacapture-image/](https://wpt.fyi/results/mediacapture-image), [mediacapture-streams/](https://wpt.fyi/results/mediacapture-streams), [streams/](https://wpt.fyi/results/streams) | 
 | | AR Camera | AR features using the camera |  | yes |  | yes | yes | ___WebXR Device API___ | [webxr/](https://wpt.fyi/results/webxr) |
 | | Audio recording | Audio recording | yes | yes | yes | yes | yes | ___MediaStream Recording API___ | [mediacapture-streams/](https://wpt.fyi/results/mediacapture-streams) | 
 | | Image processing | Compression, EXIF management, edition | yes | yes | yes | yes | yes | ___WebCodecs API___, ___MediaStream Image Capture API___ | [webcodecs/](https://wpt.fyi/results/webcodecs), [mediacapture-image/](https://wpt.fyi/results/mediacapture-image)| 
@@ -225,7 +224,7 @@ Notes:
 | | Speech recognition | AI speech recognition | yes | yes |  | yes | yes | ___Web Speech API___ |[speech-api/](https://wpt.fyi/results/speech-api) | 
 | | OCR | Extraction of information from images (driving license, ID card, etc.) |  | yes |  | yes | yes | ___Shape Detection API___ | [shape-detection/](https://wpt.fyi/results/shape-detection) | 
 | | AI object classification | Object recognition and classification from images |  | yes |  | yes | yes | ___Shape Detection API___ | [shape-detection/](https://wpt.fyi/results/shape-detection) | 
-| | Face detection | Detection of faces in images and comparisons |  | yes |  | yes | yes |  | ___Shape Detection API___ [shape-detection/](https://wpt.fyi/results/shape-detection) | 
+| | Face detection | Detection of faces in images and comparisons |  | yes |  | yes | yes | ___Shape Detection API___ |  [shape-detection/](https://wpt.fyi/results/shape-detection) | 
 | Platform-specific | Login | Account management | yes | yes | yes | yes | yes | ___FedCM API, Web Authentication API, WebOTP API___ | [fedcm/](https://wpt.fyi/results/fedcm), [webauthn/](https://wpt.fyi/results/webauthn),  [web-otp/](https://wpt.fyi/results/web-otp) | 
 | | Payments | In-app payments | yes | yes | yes | yes | yes | ___Payment Request, Payment Handlers, SPC___ APIs | [payment-handler/](https://wpt.fyi/results/payment-handler),[payment-method-basic-card/](https://wpt.fyi/results/payment-method-basic-card), [payment-method-id/](https://wpt.fyi/results/payment-method-id), [payment-request/](https://wpt.fyi/results/payment-request), [secure-payment-confirmation/](https://wpt.fyi/results/secure-payment-confirmation) | 
 | | Tokens, cards | Management of wallet |  |  | yes | yes | yes | ___Digital Credentials API___ | [digital-credentials/](https://wpt.fyi/results/digital-credentials) |
