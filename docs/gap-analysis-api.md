@@ -178,11 +178,9 @@ Notes:
 | | Upload and download | HTTP POST, PUT and GET | yes | yes | yes | yes | yes | ___Fetch API___ | [fetch/](https://wpt.fyi/results/fetch) | 
 | | WebSocket | WebSocket management | yes | yes | yes | yes | yes | ___The WebSocket API___ | [websockets/](https://wpt.fyi/results/websockets) | 
 | | mDNS service | mDNS discovery |  |  |  | yes |  |  | | 
-| Data management | Data storage | Get, set key=value pairs | yes | yes | yes | yes | yes | ___Storage API___ (___IndexedDB API___), ___Web Storage API___ | [storage-access-api/](https://wpt.fyi/results/storage-access-api)
-[storage/](https://wpt.fyi/results/storage), [webstorage/](https://wpt.fyi/results/webstorage) | 
+| Data management | Data storage | Get, set key=value pairs | yes | yes | yes | yes | yes | ___Storage API___ (___IndexedDB API___), ___Web Storage API___ | [storage-access-api/](https://wpt.fyi/results/storage-access-api), [storage/](https://wpt.fyi/results/storage), [webstorage/](https://wpt.fyi/results/webstorage) | 
 | | File system management | Storage, management in the local file system | yes | yes | yes | yes | yes | ___File System API___, ___File and Directory Entries API___ | [file-system-access/](https://wpt.fyi/results/file-system-access), [FileAPI/](https://wpt.fyi/results/FileAPI) | 
-| | Data exchange with other MiniApps | Data exchange between installed apps | yes |  | yes | yes | yes | ___Broadcast Channel API___, ___Channel Messaging API___ | [webmessaging/](https://wpt.fyi/results/webmessaging)
- | 
+| | Data exchange with other MiniApps | Data exchange between installed apps | yes |  | yes | yes | yes | ___Broadcast Channel API___, ___Channel Messaging API___ | [webmessaging/](https://wpt.fyi/results/webmessaging) | 
 | | Compression/Decompression | ZIP file compression/decompression | yes | yes |  | yes | yes |  | [compression/](https://wpt.fyi/results/compression) | 
 | | Clipboard | Clipboard set/get | yes | yes | yes | yes | yes | ___Clipboard API___ | [clipboard-apis/](https://wpt.fyi/results/clipboard-apis) | 
 | | Cryptography | Encryption, decryption, random | yes |  | yes | yes | yes | ___Web Crypto API___ | [WebCryptoAPI/](https://wpt.fyi/results/WebCryptoAPI) | 
