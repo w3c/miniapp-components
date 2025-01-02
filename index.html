@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="color-scheme" content="light dark"/>
   <title>MiniApp Components</title>
   <script defer class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
   <script class="remove">
@@ -87,6 +88,26 @@
     table.elements tbody tr td:nth-child(4),
     table.elements tbody tr td:nth-child(5) {
       width: 15vw;
+    }
+    @media (prefers-color-scheme: dark) {
+      table.elements tbody tr:nth-child(2n-1) {
+        background-color: #1a1a1a;
+      }
+      table.elements {
+        background: #000000;
+      }    
+      table.elements td,
+      table.elements th {
+        border-right: 1px solid #333333;
+        border-left: 1px solid #333333;
+      }
+      table.elements td code {
+        font-weight: bold;
+      }
+      table.elements tr:last-child td,
+      table.elements tr:last-child th {
+        border-bottom: 1px solid#333333;
+      }
     }
   </style>  
 </head>
